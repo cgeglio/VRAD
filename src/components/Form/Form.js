@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Form.css';
 
 class Form extends Component {
   constructor() {
@@ -56,7 +57,7 @@ class Form extends Component {
           <option value="Business"/>
           <option value="Other"/>
         </datalist>
-        <button onClick={this.checkInputs}>Submit</button>
+        <button className="submit-button" onClick={this.checkInputs}>Submit</button>
         { this.state.error ? <p>Please complete all fields!</p> : null }
       </form>
     )
