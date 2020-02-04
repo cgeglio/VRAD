@@ -18,11 +18,12 @@ class App extends Component {
   }
 
   render () {
+    console.log(this.state.areas[0]);
     return (
       <main>
         <h1>Scout</h1>
         <ListingContainer
-          addUser={this.addUser}
+          listings={this.addUser}
         />
       </main>
     )
