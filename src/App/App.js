@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
 import './App.css';
+import Form from './Form.js'
 
 class App extends Component {
   constructor() {
-    super()
+    super();
+    this.state: {};
   }
 
   render () {
-    return "hi"
+    return <main>
+      <Form />
+    </main>
   }
 }
 
