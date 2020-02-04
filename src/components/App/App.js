@@ -5,14 +5,20 @@ import Form from '../Form/Form'
 class App extends Component {
   constructor() {
     super();
-    this.state= {};
+    this.state= {user: {name: '', email: '', purpose: ''}};
+  }
+
+  addUser = (user) => {
+    this.setState({user: user});
   }
 
   render () {
     return (
       <main>
         <h1>Denver Digs</h1>
-        <Form />
+        <Form
+          addUser={this.addUser}
+        />
       </main>
     )
   }

@@ -6,8 +6,14 @@ class Form extends Component {
     this.state = {name:'', email:'', purpose:''};
   }
 
-  handleChange = e => {
+  handleChange = event => {
+    this.setState({[event.target.name]: event.target.value});
+  }
 
+  addUser = event => {
+    event.preventDefault();
+    this.props.addUser({name: this.state.name, email: this.state.email, purpose: this.state.purpose})
+    this.setState({name:'', email:'', purpose:''});
   }
 
   render() {
@@ -39,6 +45,7 @@ class Form extends Component {
           <option value="Business"/>
           <option value="Other"/>
         </datalist>
+        <button onClick={this.addUser}>Submit</button>
       </form>
     )
   }
