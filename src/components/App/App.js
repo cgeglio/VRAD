@@ -6,7 +6,7 @@ import { fetchListings } from './helpers.js'
 class App extends Component {
   constructor() {
     super()
-    this.state= {areas: {}, error: ''};
+    this.state= {areas: [], error: ''};
   }
 
   componentDidMount() {
@@ -18,13 +18,14 @@ class App extends Component {
   }
 
   render () {
-    console.log(this.state.areas[0]);
     return (
       <main>
         <h1>Scout</h1>
-        <ListingContainer
-          listings={this.addUser}
-        />
+        {
+          !this.state.areas.length ?
+          <Loader /> :
+          <ListingContainer areas={this.state.areas} />
+        }
       </main>
     )
   }
