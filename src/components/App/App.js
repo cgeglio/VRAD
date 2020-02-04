@@ -1,17 +1,20 @@
 import React, {Component} from 'react';
 import './App.css';
-import Form from './Form.js'
+import Form from '../Form/Form'
 
 class App extends Component {
   constructor() {
     super();
-    this.state: {};
+    this.state= {};
   }
 
   render () {
-    return <main>
-      <Form />
-    </main>
+    return (
+      <main>
+        <h1>Denver Digs</h1>
+        <Form />
+      </main>
+    )
   }
 }
 
