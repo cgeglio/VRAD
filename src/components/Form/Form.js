@@ -3,18 +3,29 @@ import React, { Component } from 'react';
 class Form extends Component {
   constructor() {
     super();
-    this.state = {name:'', email:'', purpose:''};
+    this.state = {name:'', email:'', purpose:'', error: false}
   }
 
   handleChange = event => {
-    this.setState({[event.target.name]: event.target.value});
+    this.setState({[event.target.name]: event.target.value, error: false});
+  }
+
+  checkInputs = event => {
+    event.preventDefault();
+    let formValues = Object.values(this.state);
+    if (!formValues.includes('')) {
+      this.addUser(event);
+    } else {
+      this.setState({error: true})
+    }
   }
 
   addUser = event => {
     event.preventDefault();
     this.props.addUser({name: this.state.name, email: this.state.email, purpose: this.state.purpose})
-    this.setState({name:'', email:'', purpose:''});
+    this.setState({name:'', email:'', purpose:'', error: false});
   }
+
 
   render() {
     return (
@@ -45,12 +56,11 @@ class Form extends Component {
           <option value="Business"/>
           <option value="Other"/>
         </datalist>
-        <button onClick={this.addUser}>Submit</button>
+        <button onClick={this.checkInputs}>Submit</button>
+        { this.state.error ? <p>Please complete all fields!</p> : null }
       </form>
     )
   }
-
-
 }
 
 export default Form
