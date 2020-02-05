@@ -4,6 +4,7 @@ import ListingContainer from '../ListingContainer/ListingContainer'
 import { fetchListings } from './helpers.js'
 import Loader from '../Loader/Loader'
 import Form from '../Form/Form'
+import { Header } from '../Header/Header'
 import { AreasContainer } from '../AreasContainer/AreasContainer'
 import { Route, Redirect } from 'react-router-dom'
 
@@ -14,7 +15,8 @@ class App extends Component {
       isLoggedIn: false,
       areas: '', 
       error: '', 
-      user: {name: '', email: '', purpose: ''}
+      user: {name: '', email: '', purpose: ''},
+      isLoading: true
     };
   }
 
@@ -23,12 +25,16 @@ class App extends Component {
     fetch('http://localhost:3001/api/v1/areas/')
       .then(response => response.json())
       .then(areas => fetchListings(areas))
-      .then(areaData => this.setState({ areas: areaData }))
+      .then(areaData => this.setState({ areas: areaData, isLoading: false }))
       .catch(error => this.setState({ error:'Encountered error'}))
   }
 
   addUser = (user) => {
     this.setState({user: user, isLoggedIn: true});
+  }
+
+  logout = () => {
+    this.setState({ isLoggedIn: false, user: { name: '', email: '', purpose: ''} })
   }
 
 
@@ -38,7 +44,10 @@ class App extends Component {
         <Route exact path='/'>
           {this.state.isLoggedIn ? <Redirect to='/areas' /> : (
             <>
-              <h1>Scout</h1>
+              <Header 
+                user={this.state.user} 
+                logout={this.logout} 
+              />
               <Form
                 addUser={this.addUser}
               />
@@ -46,7 +55,15 @@ class App extends Component {
           )}
         </Route>
         <Route exact path='/areas'>
-          <AreasContainer areas={this.state.areas} />
+          <Header 
+            user={this.state.user} 
+            logout={this.logout} 
+          />
+          {!this.state.isLoading 
+          ? <AreasContainer 
+              areas={this.state.areas} 
+            /> 
+          : <Loader />}
         </Route>
       </main>
     )
