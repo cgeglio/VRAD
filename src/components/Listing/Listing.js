@@ -2,7 +2,6 @@ import React from 'react'
 import './Listing.scss';
 
 const Listing = (props) => {
-  console.log(props.listing);
   return (
     <article>
       <h2>{props.listing.name}</h2>
