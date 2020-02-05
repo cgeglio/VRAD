@@ -13,13 +13,13 @@ class App extends Component {
     super()
     this.state= {
       isLoggedIn: false,
-      areas: '', 
-      error: '', 
+      selectedArea: '',
+      areas: '',
+      error: '',
       user: {name: '', email: '', purpose: ''},
       isLoading: true
     };
   }
-
 
   componentDidMount() {
     fetch('http://localhost:3001/api/v1/areas/')
@@ -37,6 +37,12 @@ class App extends Component {
     this.setState({ isLoggedIn: false, user: { name: '', email: '', purpose: ''} })
   }
 
+  selectArea = (area) => {
+    console.log(area);
+    console.log(this.state.areas);
+    this.setState({selectedArea: area})
+  }
+
 
   render () {
     return (
@@ -44,29 +50,45 @@ class App extends Component {
         <Route exact path='/'>
           {this.state.isLoggedIn ? <Redirect to='/areas' /> : (
             <>
-              <Header 
-                user={this.state.user} 
-                logout={this.logout} 
+              <Header
+                user={this.state.user}
+                logout={this.logout}
               />
               <Form
                 addUser={this.addUser}
               />
-            </>  
+            </>
           )}
         </Route>
         <Route exact path='/areas'>
-          <Header 
-            user={this.state.user} 
-            logout={this.logout} 
-          />
-          {!this.state.isLoading 
-          ? 
+          {this.state.selectedArea ? <Redirect to='/listings' /> :
+          <Header
+            user={this.state.user}
+            logout={this.logout}
+          />}
+          {!this.state.isLoading
+          ?
           <>
-            <AreasContainer 
-              areas={this.state.areas} 
-            /> 
-            <ListingContainer areas={this.state.areas} />
-          </>  
+            <AreasContainer
+              areas={this.state.areas}
+              selectArea={this.selectArea}
+            />
+          </>
+          : <Loader />}
+        </Route>
+        <Route exact path='/listings'>
+          <Header
+            user={this.state.user}
+            logout={this.logout}
+          />
+          {!this.state.isLoading
+          ?
+          <>
+            <ListingContainer
+              selectedArea={this.state.selectedArea}
+              areas={this.state.areas}
+            />
+          </>
           : <Loader />}
         </Route>
       </main>

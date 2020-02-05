@@ -4,7 +4,11 @@ import Listing from '../Listing/Listing'
 
 const ListingContainer = (props) => {
   let listings = props.areas.reduce((acc, area) => {
-    area.listings.forEach(listing => acc.push(listing))
+    if (area.nickname === props.selectedArea) {
+      area.listings.forEach(listing => {
+      acc.push(listing)
+    })
+  }
     return acc;
   },[]);
 
