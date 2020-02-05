@@ -1,3 +1,43 @@
+@mixin borders() {
+  border: 1px solid #EBEBEB;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
 article {
-  color: blue;
+  @include borders();
+  margin-bottom: 2em;
+  padding: .8em;
+}
+
+.preview-img {
+  border-radius: .3em;
+  height: 15em;
+  object-fit: cover;
+  width: 100%;
+}
+
+.details-btn {
+  @include borders();
+  color: #0C4C38;
+  font-size: .8em;
+  font-weight: bold;
+  height: 2.5em;
+  width: 20%;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #28BB8D;
+  }
+}
+
+.listing-preview {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: .8em;
+}
+
+.listing-name {
+  margin: 0;
 }

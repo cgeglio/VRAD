@@ -30,7 +30,7 @@ class App extends Component {
       !this.state.areas ?
       <Loader /> :
       <main>
-        <h1>Scout</h1>
+        <img src={process.env.PUBLIC_URL + `/scoutGreen.png`} alt="Logo" className="logo"/>
         <Form
           addUser={this.addUser}
         />
