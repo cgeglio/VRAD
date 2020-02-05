@@ -7,7 +7,8 @@ export const Header = ({ user, logout }) => {
     <div>
       <header>Scout</header>
   <div className='subheader'>{user.name}</div>
-      <Link to='/'><button className='logOut' onClick={() => logout()}>Log Out</button></Link>
+      <Link to='/'><button className='logOut' onClick={() => logout()}>Log out</button></Link>
+      <button className='favorites'>Favorites</button>
     </div>
   )
 }
