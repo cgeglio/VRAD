@@ -5,11 +5,17 @@ import { fetchListings } from './helpers.js'
 import Loader from '../Loader/Loader'
 import Form from '../Form/Form'
 import { AreasContainer } from '../AreasContainer/AreasContainer'
+import { Route, Redirect } from 'react-router-dom'
 
 class App extends Component {
   constructor() {
     super()
-    this.state= {areas: '', error: '', user: {name: '', email: '', purpose: ''}};
+    this.state= {
+      isLoggedIn: false,
+      areas: '', 
+      error: '', 
+      user: {name: '', email: '', purpose: ''}
+    };
   }
 
 
@@ -17,32 +23,31 @@ class App extends Component {
     fetch('http://localhost:3001/api/v1/areas/')
       .then(response => response.json())
       .then(areas => fetchListings(areas))
-      .then(areaData => {this.setState({ areas: areaData })
-    console.log(areaData)})
+      .then(areaData => this.setState({ areas: areaData }))
       .catch(error => this.setState({ error:'Encountered error'}))
   }
 
   addUser = (user) => {
-    this.setState({user: user});
+    this.setState({user: user, isLoggedIn: true});
   }
 
 
   render () {
     return (
-      !this.state.areas ?
-      <Loader /> :
-      <main>
-        <h1>Scout</h1>
-        <Form
-          addUser={this.addUser}
-        />
-        <AreasContainer areas={this.state.areas} />
-        <section>
-          {!this.state.areas[0].listings ?
-            <Loader /> :
-            <ListingContainer areas={this.state.areas} />
-          }
-        </section>
+      <main className='app'>
+        <Route exact path='/'>
+          {this.state.isLoggedIn ? <Redirect to='/areas' /> : (
+            <>
+              <h1>Scout</h1>
+              <Form
+                addUser={this.addUser}
+              />
+            </>  
+          )}
+        </Route>
+        <Route exact path='/areas'>
+          <AreasContainer areas={this.state.areas} />
+        </Route>
       </main>
     )
   }
