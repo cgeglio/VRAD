@@ -1,0 +1,16 @@
+form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 30%;
+}
+
+.submit-button {
+  align-self: center;
+  margin-top: 2em;
+  width: 8em;
+}
+
+p {
+  color: red;
+}

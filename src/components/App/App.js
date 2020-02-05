@@ -3,11 +3,12 @@ import './App.css';
 import ListingContainer from '../ListingContainer/ListingContainer'
 import { fetchListings } from './helpers.js'
 import Loader from '../Loader/Loader'
+import Form from '../Form/Form'
 
 class App extends Component {
   constructor() {
     super()
-    this.state= {areas: '', error: ''};
+    this.state= {areas: '', error: '', user: {name: '', email: '', purpose: ''}};
   }
 
   componentDidMount() {
@@ -16,6 +17,9 @@ class App extends Component {
       .then(areas => fetchListings(areas))
       .then(areaData => this.setState({ areas: areaData }))
       .catch(error => this.setState({ error:'Encountered error'}))
+
+  addUser = (user) => {
+    this.setState({user: user});
   }
 
   render () {
@@ -24,6 +28,9 @@ class App extends Component {
       <Loader /> :
       <main>
         <h1>Scout</h1>
+        <Form
+          addUser={this.addUser}
+        />
         <section>
           {!this.state.areas[0].listings ?
             <Loader /> :
