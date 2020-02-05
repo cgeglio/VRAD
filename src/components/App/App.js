@@ -4,6 +4,7 @@ import ListingContainer from '../ListingContainer/ListingContainer'
 import { fetchListings } from './helpers.js'
 import Loader from '../Loader/Loader'
 import Form from '../Form/Form'
+import { AreasContainer } from '../AreasContainer/AreasContainer'
 
 class App extends Component {
   constructor() {
@@ -16,7 +17,8 @@ class App extends Component {
     fetch('http://localhost:3001/api/v1/areas/')
       .then(response => response.json())
       .then(areas => fetchListings(areas))
-      .then(areaData => this.setState({ areas: areaData }))
+      .then(areaData => {this.setState({ areas: areaData })
+    console.log(areaData)})
       .catch(error => this.setState({ error:'Encountered error'}))
   }
 
@@ -34,6 +36,7 @@ class App extends Component {
         <Form
           addUser={this.addUser}
         />
+        <AreasContainer areas={this.state.areas} />
         <section>
           {!this.state.areas[0].listings ?
             <Loader /> :
