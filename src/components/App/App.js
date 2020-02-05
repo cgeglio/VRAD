@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './App.css';
+import './App.scss';
 import ListingContainer from '../ListingContainer/ListingContainer'
 import { fetchListings } from './helpers.js'
 import Loader from '../Loader/Loader'
@@ -11,16 +11,19 @@ class App extends Component {
     this.state= {areas: '', error: '', user: {name: '', email: '', purpose: ''}};
   }
 
+
   componentDidMount() {
     fetch('http://localhost:3001/api/v1/areas/')
       .then(response => response.json())
       .then(areas => fetchListings(areas))
       .then(areaData => this.setState({ areas: areaData }))
       .catch(error => this.setState({ error:'Encountered error'}))
+  }
 
   addUser = (user) => {
     this.setState({user: user});
   }
+
 
   render () {
     return (

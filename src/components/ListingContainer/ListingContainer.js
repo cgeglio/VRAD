@@ -1,5 +1,5 @@
 import React from 'react';
-import './ListingContainer.css';
+import './ListingContainer.scss';
 import Listing from '../Listing/Listing'
 
 const ListingContainer = (props) => {
