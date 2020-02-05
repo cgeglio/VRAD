@@ -3,7 +3,7 @@ import './AreaCard.scss';
 
 export const AreaCard = ({ nickname, longname, description }) => {
   return (
-  <div>
+  <div className='area-card'>
     <h2>{nickname}</h2>
     <span>{longname}</span>
     <p>{description}</p>
