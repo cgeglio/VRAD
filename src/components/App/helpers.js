@@ -11,17 +11,20 @@ export const fetchListings = (areas) => {
           description: areaInfo.about,
           listings: findAreaListings(areaInfo)
         }
-      })
+    })
   })
   return Promise.all(promises);
 }
 
 const findAreaListings = (areaInfo) => {
-  return fetch('http://localhost:3001/api/v1/listings')
+  let data =
+  fetch('http://localhost:3001/api/v1/listings')
     .then(response => response.json())
-    .then(listingsData => {
-      return listingsData.listings.filter(listings => {
-          return listings.area_id === areaInfo.id
-      })
-    })
+    .then(listingInfo => listingInfo.listings.filter(listings => {
+      return listings.area_id === areaInfo.id
+      }))
+    .then(listingData =>  console.log(listingData))
+      // data.forEach(listing => data.push(listing)))
+    .catch(error => console.log("error"))
+  return data;
 }

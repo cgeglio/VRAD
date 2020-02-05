@@ -2,11 +2,12 @@ import React, {Component} from 'react';
 import './App.css';
 import ListingContainer from '../ListingContainer/ListingContainer'
 import { fetchListings } from './helpers.js'
+import Loader from '../Loader/Loader'
 
 class App extends Component {
   constructor() {
     super()
-    this.state= {areas: [], error: ''};
+    this.state= {areas: '', error: ''};
   }
 
   componentDidMount() {
@@ -19,13 +20,16 @@ class App extends Component {
 
   render () {
     return (
+      !this.state.areas ?
+      <Loader /> :
       <main>
         <h1>Scout</h1>
-        {
-          !this.state.areas.length ?
-          <Loader /> :
-          <ListingContainer areas={this.state.areas} />
-        }
+        <section>
+          {!this.state.areas[0].listings ?
+            <Loader /> :
+            <ListingContainer areas={this.state.areas} />
+          }
+        </section>
       </main>
     )
   }
