@@ -60,9 +60,13 @@ class App extends Component {
             logout={this.logout} 
           />
           {!this.state.isLoading 
-          ? <AreasContainer 
+          ? 
+          <>
+            <AreasContainer 
               areas={this.state.areas} 
             /> 
+            <ListingContainer areas={this.state.areas} />
+          </>  
           : <Loader />}
         </Route>
       </main>
