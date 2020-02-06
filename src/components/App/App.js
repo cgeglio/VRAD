@@ -76,7 +76,7 @@ class App extends Component {
           </>
           )
         }}/>
-        <Route exact path='/area/:id' render={({ match }) => {
+        <Route exact path='/area/:id/listings' render={({ match }) => {
           return (
             <>
               <Header 
