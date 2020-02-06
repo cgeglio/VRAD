@@ -40,7 +40,6 @@ class App extends Component {
   addListingsToState = listings => {
     const allListings = listings.map(listing => listing)
     this.setState({ listings: allListings })
-    console.log(allListings)
   }
 
 

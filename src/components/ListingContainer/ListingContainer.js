@@ -1,25 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './ListingContainer.scss';
 import Listing from '../Listing/Listing'
 
-const ListingContainer = (props) => {
-  let listings = props.areas.reduce((acc, area) => {
-    area.listings.forEach(listing => acc.push(listing))
-    return acc;
-  },[]);
-
-  return (
-    <section>
-      <h2>There Are {listings.length} Available Listings:</h2>
-      {listings.map(listing => {
-        return <Listing
-          key={listing.name}
-          listing={listing}
-        />
-      })
+class ListingContainer extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isLoading: true,
+      listings: '',
+      error: ''
     }
-  </section>
-  )
+  }
+
+  componentDidMount() {
+    let allListings = this.props.listings.map(listing => {
+      return fetch(`http://localhost:3001${listing}`)
+        .then(res => res.json())
+        .then(data => data)
+    })
+    Promise.all(allListings)
+      .then(data => {
+        this.setState({ listings: data, isLoading: false })
+        console.log(this.state)
+      })
+  }
+
+
+  render() {
+    return (
+      <div>{this.state.isLoading ? <h1>eh</h1> : <h2>meep</h2>}
+        <h3>hi</h3>
+        <p>{this.state.error}</p>
+      </div>
+    )
+  }
 }
 
 export default ListingContainer

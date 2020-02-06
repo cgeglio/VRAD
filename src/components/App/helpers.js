@@ -2,7 +2,7 @@ export const fetchDetails = (areas) => {
   const promises = areas.areas.map(area => {
     return fetch('http://localhost:3001' + area.details)
       .then(response => response.json())
-      .then(async areaInfo => {
+      .then(areaInfo => {
         return {
           id: areaInfo.id,
           nickname: area.name || area.area,
