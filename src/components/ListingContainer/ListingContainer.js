@@ -22,8 +22,4 @@ const ListingContainer = (props) => {
   )
 }
 
-
-
-
-
 export default ListingContainer

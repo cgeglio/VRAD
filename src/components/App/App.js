@@ -16,10 +16,10 @@ class App extends Component {
       areas: '', 
       error: '', 
       user: {name: '', email: '', purpose: ''},
-      isLoading: true
+      isLoading: true,
+      listings: []
     };
   }
-
 
   componentDidMount() {
     fetch('http://localhost:3001/api/v1/areas/')
@@ -37,6 +37,12 @@ class App extends Component {
     this.setState({ isLoggedIn: false, user: { name: '', email: '', purpose: ''} })
   }
 
+  addListingsToState = listings => {
+    const allListings = listings.map(listing => listing)
+    this.setState({ listings: allListings })
+    console.log(allListings)
+  }
+
 
   render () {
     return (
@@ -51,24 +57,29 @@ class App extends Component {
               <Form
                 addUser={this.addUser}
               />
+              <Loader />
             </>  
           )}
         </Route>
-        <Route exact path='/areas'>
-          <Header 
-            user={this.state.user} 
-            logout={this.logout} 
-          />
-          {!this.state.isLoading 
-          ? 
+        <Route exact path='/areas' render={() => {
+          return (
           <>
-            <AreasContainer 
-              areas={this.state.areas} 
-            /> 
-            <ListingContainer areas={this.state.areas} />
-          </>  
-          : <Loader />}
-        </Route>
+            <Header 
+              user={this.state.user} 
+              logout={this.logout} 
+            />
+            {!this.state.isLoading 
+            ? 
+            <>
+              <AreasContainer 
+                areas={this.state.areas}
+                addListingsToState={this.addListingsToState}
+              /> 
+            </>  
+            : <Loader />}
+          </>
+          )
+        }}/>
       </main>
     )
   }
