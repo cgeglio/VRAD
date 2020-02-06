@@ -42,7 +42,6 @@ class App extends Component {
     this.setState({ listings: allListings })
   }
 
-
   render () {
     return (
       <main className='app'>

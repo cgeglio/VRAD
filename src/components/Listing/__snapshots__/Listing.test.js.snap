@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Listing should match the snapshot with all data passed in correctly 1`] = `
+<article>
+  <img
+    alt="Listing"
+    className="preview-img"
+    src="/images/5_a.jpg"
+  />
+  <div
+    className="listing-preview"
+  >
+    <h2
+      className="listing-name"
+    >
+      test name
+    </h2>
+    <button
+      className="details-btn"
+    >
+      Details
+    </button>
+  </div>
+</article>
+`;

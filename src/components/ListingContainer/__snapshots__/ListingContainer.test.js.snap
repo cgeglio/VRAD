@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListingContainer should match the snapshot with all data passed in correctly 1`] = `
+<section>
+  <h2>
+    There Are 
+    1
+     Available Listings:
+  </h2>
+  <Listing
+    key="test name"
+    listing={
+      Object {
+        "listing_id": 5,
+        "name": "test name",
+      }
+    }
+  />
+</section>
+`;
