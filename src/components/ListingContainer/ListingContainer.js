@@ -28,7 +28,7 @@ class ListingContainer extends Component {
     return this.state.listings.map(listing => {
       return(
         <Listing 
-          listing={listing}
+          {...listing}
           key={listing.listing_id}
         />
       )
