@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Header.scss';
 import { Link } from 'react-router-dom'
 
 export const Header = ({ user, logout }) => {
   return (
+
     <div>
       <header><img src={process.env.PUBLIC_URL + `/scoutGreen.png`} alt="Logo" className="header-logo" /></header>
   <div className='subheader'>{user.name}</div>
@@ -12,3 +14,8 @@ export const Header = ({ user, logout }) => {
     </div>
   )
 }
+
+Header.propTypes = {
+  user: PropTypes.object,
+  logout: PropTypes.func
+};

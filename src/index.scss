@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Oxygen&display=swap');
 
+@mixin borders() {
+  border: 1px solid #EBEBEB;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
 * {
   margin: 0;
   padding: 0;
