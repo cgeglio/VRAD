@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import './ListingDetailsContainer.scss';
 import ListingDetails from '../ListingDetails/ListingDetails'
 
-const ListingDetailsContainer = ({ name, listing_id }) => {
+const ListingDetailsContainer = (props) => {
   return (
       <ListingDetails
-        name={name}
-        key={listing_id}
+        {...props}
+        key={props.listing_id}
       />
     )
 }

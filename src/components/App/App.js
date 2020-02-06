@@ -8,6 +8,7 @@ import Form from '../Form/Form'
 import { Header } from '../Header/Header'
 import { AreasContainer } from '../AreasContainer/AreasContainer'
 import { Route, Redirect } from 'react-router-dom'
+import { Carousel } from 'react-responsive-carousel'
 
 class App extends Component {
   constructor() {
@@ -52,6 +53,7 @@ class App extends Component {
     return (
       <main className='app'>
         <Route exact path='/'>
+          <>
           {this.state.isLoggedIn ? <Redirect to='/areas' /> : (
             <>
               <img src={process.env.PUBLIC_URL + `/scoutGreen.png`} alt="Logo" className="logo" />
@@ -62,6 +64,7 @@ class App extends Component {
               <Loader />
             </>
           )}
+          </>
         </Route>
         <Route exact path='/areas' render={() => {
           return (
