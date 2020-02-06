@@ -6,5 +6,12 @@ main {
 }
 
 .logo {
-  height: 8em;
+  height: 10em;
+  margin: 3em 0 2em 0;
+}
+
+.background-img {
+  max-height: 30%;
+  object-fit: cover;
+  position: relative;
 }

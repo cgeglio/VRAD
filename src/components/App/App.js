@@ -13,8 +13,8 @@ class App extends Component {
     super()
     this.state= {
       isLoggedIn: false,
-      areas: '', 
-      error: '', 
+      areas: '',
+      error: '',
       user: {name: '', email: '', purpose: ''},
       isLoading: true
     };
@@ -44,29 +44,27 @@ class App extends Component {
         <Route exact path='/'>
           {this.state.isLoggedIn ? <Redirect to='/areas' /> : (
             <>
-              <Header 
-                user={this.state.user} 
-                logout={this.logout} 
-              />
+              <img src={process.env.PUBLIC_URL + `/scoutGreen.png`} alt="Logo" className="logo" />
+              <img src={process.env.PUBLIC_URL + `/rmnp.jpg`} alt="Rocky Mountain National Park" className="background-img" />
               <Form
                 addUser={this.addUser}
               />
-            </>  
+            </>
           )}
         </Route>
         <Route exact path='/areas'>
-          <Header 
-            user={this.state.user} 
-            logout={this.logout} 
+          <Header
+            user={this.state.user}
+            logout={this.logout}
           />
-          {!this.state.isLoading 
-          ? 
+          {!this.state.isLoading
+          ?
           <>
-            <AreasContainer 
-              areas={this.state.areas} 
-            /> 
+            <AreasContainer
+              areas={this.state.areas}
+            />
             <ListingContainer areas={this.state.areas} />
-          </>  
+          </>
           : <Loader />}
         </Route>
       </main>
