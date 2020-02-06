@@ -1,10 +1,9 @@
 import React from 'react';
 
 const Loader = () => {
-  const img = process.env.PUBLIC_URL + '/assets/noun_Travel_2913599.svg'
   return (
     <div className='loader'>
-      <img src={img} alt='travel spinner' />
+      <img src={process.env.PUBLIC_URL + '/noun_Travel_2913599.svg'} alt='travel spinner' className='loader-img' />
     </div>
   )
 }
