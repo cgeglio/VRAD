@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should match the snapshot with all data passed in correctly 1`] = `
+<div>
+  <header>
+    <img
+      alt="Logo"
+      className="header-logo"
+      src="/scoutGreen.png"
+    />
+  </header>
+  <div
+    className="subheader"
+  >
+    Jeff
+  </div>
+  <Link
+    to="/"
+  >
+    <button
+      className="logOut"
+      onClick={[Function]}
+    >
+      Log out
+    </button>
+  </Link>
+  <button
+    className="favorites"
+  >
+    Favorites
+  </button>
+</div>
+`;

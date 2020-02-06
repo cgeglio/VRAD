@@ -4,14 +4,14 @@ import { AreaCard } from './AreaCard';
 
 describe('AreaCard', () => {
   it('should match the snapshot with all data passed in correctly', () => {
-    let area = {
+    let mockArea = {
       nickname: 'test nickname',
       longname: 'test longname',
       description: 'test description',
       id: 5
     }
     const wrapper = shallow(<AreaCard
-      {...area} key={area.id}
+      {...mockArea} key={mockArea.id}
     />);
   expect(wrapper).toMatchSnapshot();
   });
