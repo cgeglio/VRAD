@@ -14,7 +14,7 @@ const ListingContainer = (props) => {
       {listings.map(listing => {
         return <Listing
           key={listing.name}
-          listing={listing}
+          {...listing}
         />
       })
     }
