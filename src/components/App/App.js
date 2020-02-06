@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.scss';
 import ListingContainer from '../ListingContainer/ListingContainer'
-import { fetchListings } from './helpers.js'
+import { fetchDetails } from './helpers.js'
 import Loader from '../Loader/Loader'
 import Form from '../Form/Form'
 import { Header } from '../Header/Header'
@@ -24,7 +24,7 @@ class App extends Component {
   componentDidMount() {
     fetch('http://localhost:3001/api/v1/areas/')
       .then(response => response.json())
-      .then(areas => fetchListings(areas))
+      .then(areas => fetchDetails(areas))
       .then(areaData => this.setState({ areas: areaData, isLoading: false }))
       .catch(error => this.setState({ error:'Encountered error'}))
   }

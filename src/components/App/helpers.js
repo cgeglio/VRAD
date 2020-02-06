@@ -1,4 +1,4 @@
-export const fetchListings = (areas) => {
+export const fetchDetails = (areas) => {
   const promises = areas.areas.map(area => {
     return fetch('http://localhost:3001' + area.details)
       .then(response => response.json())
@@ -9,7 +9,7 @@ export const fetchListings = (areas) => {
           longname: areaInfo.name,
           location: areaInfo.location,
           description: areaInfo.about,
-          listings: await findAreaListings(areaInfo)
+          listings: areaInfo.listings
         }
       })
   })
