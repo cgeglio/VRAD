@@ -13,10 +13,15 @@ exports[`AreaCard should match the snapshot with all data passed in correctly 1`
   <p>
     test description
   </p>
-  <button
-    className="view-listings"
+  <Link
+    to="/area/5"
   >
-    View listings
-  </button>
+    <button
+      className="view-listings"
+      onClick={[Function]}
+    >
+      View listings
+    </button>
+  </Link>
 </div>
 `;

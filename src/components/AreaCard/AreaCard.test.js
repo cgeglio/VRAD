@@ -8,10 +8,15 @@ describe('AreaCard', () => {
       nickname: 'test nickname',
       longname: 'test longname',
       description: 'test description',
-      id: 5
+      id: 5,
+      listings: [{name: 'test name', listing_id: 5}]
     }
+    const mockAddListingsToState = jest.fn();
+
     const wrapper = shallow(<AreaCard
-      {...mockArea} key={mockArea.id}
+      {...mockArea}
+      key={mockArea.id}
+      addListingsToState={mockAddListingsToState}
     />);
   expect(wrapper).toMatchSnapshot();
   });

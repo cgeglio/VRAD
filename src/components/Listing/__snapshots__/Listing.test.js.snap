@@ -5,16 +5,14 @@ exports[`Listing should match the snapshot with all data passed in correctly 1`]
   <img
     alt="Listing"
     className="preview-img"
-    src="/images/5_a.jpg"
+    src="/images/undefined_a.jpg"
   />
   <div
     className="listing-preview"
   >
     <h2
       className="listing-name"
-    >
-      test name
-    </h2>
+    />
     <button
       className="details-btn"
     >

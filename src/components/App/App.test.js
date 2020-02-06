@@ -15,7 +15,8 @@ describe('App', () => {
       areas: '',
       error: '',
       user: {name: '', email: '', purpose: ''},
-      isLoading: true
+      isLoading: true,
+      listings: []
     };
     expect(wrapper.state()).toEqual(expected);
   });
@@ -29,7 +30,8 @@ describe('App', () => {
       areas: '',
       error: '',
       user: {name: 'Jeff', email: 'jeff@turing.org', purpose: 'vacation'},
-      isLoading: true
+      isLoading: true,
+      listings: []
     });
   });
 
@@ -43,7 +45,8 @@ describe('App', () => {
         areas: '',
         error: '',
         user: { name: '', email: '', purpose: ''},
-        isLoading: true
+        isLoading: true,
+        listings: []
       });
   });
 });
