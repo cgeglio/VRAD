@@ -1,22 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './ListingPreview.scss';
 import { Link } from 'react-router-dom';
 
-const ListingPreview = ({ listing, setCurrentListing, addFavorite }) => {
 
-  return (
-    <article>
-      <img src={process.env.PUBLIC_URL + `/images/${listing.listing_id}_a.jpg`} alt="Listing" className="preview-img" />
-      <div className="listing-preview">
-        <h2 className="listing-name">{listing.name}</h2>
-        <div className="buttons">
-          <Link to={`/area/${listing.area_id}/listings/${listing.listing_id}`}><button onClick={() => {setCurrentListing(listing)}} className="details-btn">View Details</button></Link>
-          <button onClick={() => {addFavorite(listing)}} className="favorite-btn"><img src={process.env.PUBLIC_URL + `/unfilled-heart.png`} alt="Favorite icon" className="favorite-img"/></button>
+class ListingPreview extends Component {
+  constructor() {
+    super();
+    this.state = {favorite: false}
+  }
+
+  setFavorite = (listing) => {
+    this.setState({favorite: !this.state.favorite})
+    this.props.addFavorite(listing);
+  }
+
+  getImageName = () => this.state.favorite ? 'filled' : 'unfilled';
+
+  render () {
+    const icon = this.getImageName();
+    return (
+      <article>
+        <img src={process.env.PUBLIC_URL + `/images/${this.props.listing.listing_id}_a.jpg`} alt="Listing" className="preview-img" />
+        <div className="listing-preview">
+          <h2 className="listing-name">{this.props.listing.name}</h2>
+          <div className="buttons">
+            <Link to={`/area/${this.props.listing.area_id}/listings/${this.props.listing.listing_id}`}><button onClick={() => {this.props.setCurrentListing(this.props.listing)}} className="details-btn">View Details</button></Link>
+            <button onClick={() => {this.setFavorite(this.props.listing)}} className="favorite-btn"><img src={process.env.PUBLIC_URL + `/${icon}-heart.png`} alt="Favorite icon" className="favorite-img"/></button>
+          </div>
         </div>
-      </div>
-    </article>
-  )
+      </article>
+    )
+  }
 }
 
 export default ListingPreview;
