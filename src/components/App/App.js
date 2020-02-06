@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.scss';
 import ListingContainer from '../ListingContainer/ListingContainer'
+import ListingDetailsContainer from '../ListingDetailsContainer/ListingDetailsContainer'
 import { fetchDetails } from './helpers.js'
 import Loader from '../Loader/Loader'
 import Form from '../Form/Form'
@@ -17,7 +18,8 @@ class App extends Component {
       error: '',
       user: {name: '', email: '', purpose: ''},
       isLoading: true,
-      listings: []
+      listings: [],
+      currentListing: ''
     };
   }
 
@@ -42,6 +44,10 @@ class App extends Component {
     this.setState({ listings: allListings })
   }
 
+  setCurrentListing = listing => {
+    this.setState({currentListing: listing})
+  }
+
   render () {
     return (
       <main className='app'>
@@ -54,24 +60,24 @@ class App extends Component {
                 addUser={this.addUser}
               />
               <Loader />
-            </>  
+            </>
           )}
         </Route>
         <Route exact path='/areas' render={() => {
           return (
           <>
-            <Header 
-              user={this.state.user} 
-              logout={this.logout} 
+            <Header
+              user={this.state.user}
+              logout={this.logout}
             />
-            {!this.state.isLoading 
-            ? 
+            {!this.state.isLoading
+            ?
             <>
-              <AreasContainer 
+              <AreasContainer
                 areas={this.state.areas}
                 addListingsToState={this.addListingsToState}
-              /> 
-            </>  
+              />
+            </>
             : <Loader />}
           </>
           )
@@ -79,12 +85,27 @@ class App extends Component {
         <Route exact path='/area/:id/listings' render={({ match }) => {
           return (
             <>
-              <Header 
+              <Header
                 user={this.state.user}
                 logout={this.logout}
               />
-              <ListingContainer 
+              <ListingContainer
                 listings={this.state.listings}
+                setCurrentListing={this.setCurrentListing}
+              />
+            </>
+          )
+        }} />
+        <Route exact path='/area/:id/listings/:id' render={({ match }) => {
+
+          return (
+            <>
+              <Header
+                user={this.state.user}
+                logout={this.logout}
+              />
+              <ListingDetailsContainer
+                {...this.state.currentListing}
               />
             </>
           )

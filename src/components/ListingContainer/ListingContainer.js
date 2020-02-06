@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './ListingContainer.scss';
-import Listing from '../Listing/Listing'
+import ListingPreview from '../ListingPreview/ListingPreview'
 import Loader from '../Loader/Loader'
 
 class ListingContainer extends Component {
@@ -27,9 +27,10 @@ class ListingContainer extends Component {
   createCards = () => {
     return this.state.listings.map(listing => {
       return(
-        <Listing 
-          {...listing}
+        <ListingPreview
+          listing={listing}
           key={listing.listing_id}
+          setCurrentListing={this.props.setCurrentListing}
         />
       )
     })
@@ -38,9 +39,9 @@ class ListingContainer extends Component {
 
   render() {
     return (
-      <>{this.state.isLoading 
-        ? <Loader /> 
-        : <section>{this.createCards()}</section>} 
+      <>{this.state.isLoading
+        ? <Loader />
+        : <section>{this.createCards()}</section>}
       </>
     )
   }
