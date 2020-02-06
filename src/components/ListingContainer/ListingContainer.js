@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './ListingContainer.scss';
 import Listing from '../Listing/Listing'
+import Loader from '../Loader/Loader'
 
 class ListingContainer extends Component {
   constructor(props) {
@@ -19,19 +20,27 @@ class ListingContainer extends Component {
         .then(data => data)
     })
     Promise.all(allListings)
-      .then(data => {
-        this.setState({ listings: data, isLoading: false })
-        console.log(this.state)
-      })
+      .then(data => this.setState({ listings: data, isLoading: false }))
+  }
+
+  createCards = () => {
+    return this.state.listings.map(listing => {
+      return(
+        <Listing 
+          listing={listing}
+          key={listing.listing_id}
+        />
+      )
+    })
   }
 
 
   render() {
     return (
-      <div>{this.state.isLoading ? <h1>eh</h1> : <h2>meep</h2>}
-        <h3>hi</h3>
-        <p>{this.state.error}</p>
-      </div>
+      <>{this.state.isLoading 
+        ? <Loader /> 
+        : <section>{this.createCards()}</section>} 
+      </>
     )
   }
 }
