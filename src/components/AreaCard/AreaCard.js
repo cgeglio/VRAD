@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './AreaCard.scss';
 import { Link } from 'react-router-dom';
 
@@ -14,3 +15,9 @@ export const AreaCard = ({ id, nickname, longname, description, listings, addLis
   </div>
   )
 }
+
+AreaCard.propTypes = {
+  nickname: PropTypes.string,
+  longname: PropTypes.string,
+  description: PropTypes.string
+};

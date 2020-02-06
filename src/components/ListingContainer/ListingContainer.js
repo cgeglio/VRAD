@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './ListingContainer.scss';
 import Listing from '../Listing/Listing'
 import Loader from '../Loader/Loader'
@@ -46,3 +47,7 @@ class ListingContainer extends Component {
 }
 
 export default ListingContainer
+
+ListingContainer.propTypes = {
+  areas: PropTypes.array
+};
