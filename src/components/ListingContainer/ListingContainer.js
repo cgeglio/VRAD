@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './ListingContainer.scss';
 import Listing from '../Listing/Listing'
 
-const ListingContainer = (props) => {
-  let listings = props.areas.reduce((acc, area) => {
+const ListingContainer = ({ areas }) => {
+  let listings = areas.reduce((acc, area) => {
     area.listings.forEach(listing => acc.push(listing))
     return acc;
   },[]);
@@ -22,8 +23,8 @@ const ListingContainer = (props) => {
   )
 }
 
-
-
-
-
 export default ListingContainer
+
+ListingContainer.propTypes = {
+  areas: PropTypes.array
+};

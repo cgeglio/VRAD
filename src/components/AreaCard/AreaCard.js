@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './AreaCard.scss';
 
 export const AreaCard = ({ nickname, longname, description }) => {
@@ -11,3 +12,9 @@ export const AreaCard = ({ nickname, longname, description }) => {
   </div>
   )
 }
+
+AreaCard.propTypes = {
+  nickname: PropTypes.string,
+  longname: PropTypes.string,
+  description: PropTypes.string
+};
