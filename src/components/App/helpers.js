@@ -15,12 +15,3 @@ export const fetchDetails = (areas) => {
   })
   return Promise.all(promises);
 }
-
-const findAreaListings = (areaInfo) => {
-  return fetch('http://localhost:3001/api/v1/listings')
-    .then(response => response.json())
-    .then(listingInfo => listingInfo.listings.filter(listings => {
-      return listings.area_id === areaInfo.id
-      }))
-    .catch(error => console.log("error"))
-}
