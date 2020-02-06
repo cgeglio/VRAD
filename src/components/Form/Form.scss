@@ -1,18 +1,30 @@
+@import "../../mixins.scss";
+
 form {
+  align-items: center;
   display: flex;
   flex-direction: column;
+  margin-top: 3em;
+  position: absolute;
   text-align: center;
-  width: 30%;
-  
+  width: 40%;
+
   p {
     color: red;
+  }
+
+  input {
+    @include borders();
+    font-size: 1em;
+    height: 3em;
+    margin-bottom: 2em;
+    text-indent: 1em;
+    width: 100%;
   }
 }
 
 .submit-button {
+  @include buttons();
   align-self: center;
-  margin-top: 2em;
-  width: 8em;
+  width: 35%;
 }
-
-
