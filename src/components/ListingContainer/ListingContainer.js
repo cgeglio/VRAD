@@ -30,6 +30,7 @@ class ListingContainer extends Component {
         <ListingPreview
           listing={listing}
           key={listing.listing_id}
+          addFavorite={this.addFavorite}
           setCurrentListing={this.props.setCurrentListing}
         />
       )

@@ -16,6 +16,17 @@ article {
 .details-btn {
   @include borders();
   @include buttons();
+  width: 8em;
+}
+
+.favorite-btn {
+  background-color: initial;
+  border: 0;
+  margin: 0em 1em;
+}
+
+.favorite-img {
+  height: 4em;
 }
 
 .listing-preview {
@@ -27,4 +38,11 @@ article {
 
 .listing-name {
   margin: 0;
+}
+
+.buttons {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
