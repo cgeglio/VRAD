@@ -80,6 +80,19 @@ class App extends Component {
           </>
           )
         }}/>
+        <Route exact path='/area/:id' render={({ match }) => {
+          return (
+            <>
+              <Header 
+                user={this.state.user}
+                logout={this.logout}
+              />
+              <ListingContainer 
+                listings={this.state.listings}
+              />
+            </>
+          )
+        }} />
       </main>
     )
   }
