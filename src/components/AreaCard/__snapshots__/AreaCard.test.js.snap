@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AreaCard should match the snapshot with all data passed in correctly 1`] = `
+<div
+  className="area-card"
+>
+  <h2>
+    test nickname
+  </h2>
+  <span>
+    test longname
+  </span>
+  <p>
+    test description
+  </p>
+  <button
+    className="view-listings"
+  >
+    View listings
+  </button>
+</div>
+`;
