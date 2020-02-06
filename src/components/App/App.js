@@ -53,14 +53,15 @@ class App extends Component {
   addFavorite = listing => {
     !this.state.favorites.includes(listing) ?
     this.setState({favorites: [...this.state.favorites, listing]}) :
-    this.removeFavorite(listing.listing_id)
+    this.removeFavorite(listing.listing_id);
   }
 
   removeFavorite = listingId => {
-    this.setState({favorites: this.state.favorites.filter(favorite => favorite.listing_id !== listingId)})
+    this.setState({favorites: this.state.favorites.filter(favorite => favorite.listing_id !== listingId)});
   }
 
   render () {
+
     return (
       <main className='app'>
         <Route exact path='/'>
@@ -102,6 +103,7 @@ class App extends Component {
                 logout={this.logout}
               />
               <ListingContainer
+                favorites={this.state.favorites}
                 listings={this.state.listings}
                 addFavorite={this.addFavorite}
                 setCurrentListing={this.setCurrentListing}

@@ -7,15 +7,15 @@ import { Link } from 'react-router-dom';
 class ListingPreview extends Component {
   constructor() {
     super();
-    this.state = {favorite: false}
   }
 
   setFavorite = (listing) => {
-    this.setState({favorite: !this.state.favorite})
     this.props.addFavorite(listing);
   }
 
-  getImageName = () => this.state.favorite ? 'filled' : 'unfilled';
+  getImageName = () => {
+    return this.props.listing.favorite ? 'filled' : 'unfilled';
+  }
 
   render () {
     const icon = this.getImageName();
