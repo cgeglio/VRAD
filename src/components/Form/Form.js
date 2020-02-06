@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './Form.scss';
 
 class Form extends Component {
@@ -65,3 +66,7 @@ class Form extends Component {
 }
 
 export default Form
+
+Form.propTypes = {
+  addUser: PropTypes.func
+};
