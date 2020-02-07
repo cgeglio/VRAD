@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.scss';
 import ListingContainer from '../ListingContainer/ListingContainer'
 import ListingDetailsContainer from '../ListingDetailsContainer/ListingDetailsContainer'
+import FavoritesContainer from '../FavoritesContainer/FavoritesContainer'
 import { fetchDetails } from './helpers.js'
 import Loader from '../Loader/Loader'
 import Form from '../Form/Form'
@@ -20,7 +21,8 @@ class App extends Component {
       user: {name: '', email: '', purpose: ''},
       isLoading: true,
       listings: [],
-      currentListing: ''
+      currentListing: '',
+      favorites: []
     };
   }
 
@@ -49,7 +51,18 @@ class App extends Component {
     this.setState({currentListing: listing})
   }
 
+  addFavorite = listing => {
+    !this.state.favorites.includes(listing) ?
+    this.setState({favorites: [...this.state.favorites, listing]}) :
+    this.removeFavorite(listing.listing_id);
+  }
+
+  removeFavorite = listingId => {
+    this.setState({favorites: this.state.favorites.filter(favorite => favorite.listing_id !== listingId)});
+  }
+
   render () {
+
     return (
       <main className='app'>
         <Route exact path='/'>
@@ -93,7 +106,9 @@ class App extends Component {
                 logout={this.logout}
               />
               <ListingContainer
+                favorites={this.state.favorites}
                 listings={this.state.listings}
+                addFavorite={this.addFavorite}
                 setCurrentListing={this.setCurrentListing}
               />
             </>
@@ -113,7 +128,23 @@ class App extends Component {
             </>
           )
         }} />
-      </main>
+      <Route exact path='/favorites' render={({ match }) => {
+
+        return (
+          <>
+            <Header
+              user={this.state.user}
+              logout={this.logout}
+            />
+            <FavoritesContainer
+              favorites={this.state.favorites}
+              addFavorite={this.addFavorite}
+              setCurrentListing={this.setCurrentListing}
+            />
+          </>
+        )
+      }} />
+    </main>
     )
   }
 }

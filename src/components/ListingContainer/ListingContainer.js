@@ -24,12 +24,20 @@ class ListingContainer extends Component {
       .then(data => this.setState({ listings: data, isLoading: false }))
   }
 
+  determineFavoriteStatus = () => {
+    return this.state.listings.map(listing => {
+      return this.props.favorites.includes(listing) ? listing.favorite = true : listing.favorite = false
+    })
+  }
+
   createCards = () => {
+    this.determineFavoriteStatus();
     return this.state.listings.map(listing => {
       return(
         <ListingPreview
           listing={listing}
           key={listing.listing_id}
+          addFavorite={this.props.addFavorite}
           setCurrentListing={this.props.setCurrentListing}
         />
       )
