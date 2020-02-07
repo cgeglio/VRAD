@@ -39,7 +39,7 @@ class App extends Component {
   }
 
   logout = () => {
-    this.setState({ isLoggedIn: false, user: { name: '', email: '', purpose: ''} })
+    this.setState({ isLoggedIn: false, user: { name: '', email: '', purpose: ''}, favorites: [] })
   }
 
   addListingsToState = listings => {
