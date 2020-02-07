@@ -8,7 +8,7 @@ export const Header = ({ user, logout }) => {
 
     <div>
       <header><img src={process.env.PUBLIC_URL + `/scoutGreen.png`} alt="Logo" className="header-logo" /></header>
-  <div className='subheader'>{user.name}</div>
+      <h2>{user.name}</h2>
       <Link to='/'><button className='logOut' onClick={() => logout()}>Log out</button></Link>
       <Link to='/favorites'><button className='favorites'>Favorites</button></Link>
     </div>
