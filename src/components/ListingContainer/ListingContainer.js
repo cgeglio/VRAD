@@ -21,12 +21,14 @@ class ListingContainer extends Component {
         .then(data => data)
     })
     Promise.all(allListings)
-      .then(data => this.setState({ listings: data, isLoading: false }))
+      .then(data => data.map(listing => ({...listing, favorite: false})))
+      .then(listings => this.setState({ listings: listings, isLoading: false }))
   }
 
   determineFavoriteStatus = () => {
+    let ids = this.props.favorites.map(favorite => favorite.listing_id)
     return this.state.listings.map(listing => {
-      return this.props.favorites.includes(listing) ? listing.favorite = true : listing.favorite = false
+      return ids.includes(listing.listing_id) ? listing.favorite = true : listing;
     })
   }
 

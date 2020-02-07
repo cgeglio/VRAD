@@ -136,11 +136,13 @@ class App extends Component {
               user={this.state.user}
               logout={this.logout}
             />
+        {!this.state.favorites.length ? <h2>You don't have any favorites yet!</h2> :
             <FavoritesContainer
               favorites={this.state.favorites}
               addFavorite={this.addFavorite}
               setCurrentListing={this.setCurrentListing}
             />
+          }
           </>
         )
       }} />
