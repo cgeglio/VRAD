@@ -10,7 +10,13 @@ form {
   width: 40%;
 
   p {
-    color: red;
+    @include borders();
+    background-color: #FFFFFF;
+    color: #C70039;
+    font-size: 1.2em;
+    margin-top: 1em;
+    height: 1.5em;
+    width: 14em;
   }
 
   input {
