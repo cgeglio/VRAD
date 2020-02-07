@@ -77,6 +77,7 @@ class App extends Component {
               <Loader />
             </>
           )}
+          <Loader />
           </>
         </Route>
         <Route exact path='/areas' render={() => {
