@@ -4,20 +4,20 @@ import './ListingDetails.scss';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 
-const ListingDetails = ({name, listing_id, address, details }) => {
-  const createList = details.features.map(feature => <li>{feature}</li>)
+const ListingDetails = ({ name, listing_id, address, details }) => {
+  const createList = details.features.map(feature => <li key={Math.random()}>{feature}</li>)
   
   return (
     <article className='listing'>
       <Carousel className='carousel' width='700px'>
         <div>
-          <img className='listing-img' src={process.env.PUBLIC_URL + `/images/${listing_id}_a.jpg`} />
+          <img className='listing-img' src={process.env.PUBLIC_URL + `/images/${listing_id}_a.jpg`} alt='listing 1' />
         </div>
         <div>
-          <img className='listing-img' src={process.env.PUBLIC_URL + `/images/${listing_id}_b.jpg`} />
+          <img className='listing-img' src={process.env.PUBLIC_URL + `/images/${listing_id}_b.jpg`} alt='listing 2' />
         </div>
         <div>
-          <img className='listing-img' src={process.env.PUBLIC_URL + `/images/${listing_id}_c.jpg`} />
+          <img className='listing-img' src={process.env.PUBLIC_URL + `/images/${listing_id}_c.jpg`} alt='listing 3' />
         </div>
       </Carousel>
 
@@ -42,5 +42,3 @@ const ListingDetails = ({name, listing_id, address, details }) => {
 }
 
 export default ListingDetails
-
-

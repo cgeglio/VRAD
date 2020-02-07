@@ -9,7 +9,6 @@ import Form from '../Form/Form'
 import { Header } from '../Header/Header'
 import { AreasContainer } from '../AreasContainer/AreasContainer'
 import { Route, Redirect } from 'react-router-dom'
-import { Carousel } from 'react-responsive-carousel'
 
 class App extends Component {
   constructor() {
@@ -74,7 +73,6 @@ class App extends Component {
               <Form
                 addUser={this.addUser}
               />
-              <Loader />
             </>
           )}
           </>
