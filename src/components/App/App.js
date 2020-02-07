@@ -39,7 +39,7 @@ class App extends Component {
   }
 
   logout = () => {
-    this.setState({ isLoggedIn: false, user: { name: '', email: '', purpose: ''} })
+    this.setState({ isLoggedIn: false, user: { name: '', email: '', purpose: ''}, favorites: [] })
   }
 
   addListingsToState = listings => {
@@ -83,6 +83,7 @@ class App extends Component {
           return (
           <>
             <Header
+              favoritesNumber={this.state.favorites.length}
               user={this.state.user}
               logout={this.logout}
             />
@@ -102,6 +103,7 @@ class App extends Component {
           return (
             <>
               <Header
+                favoritesNumber={this.state.favorites.length}
                 user={this.state.user}
                 logout={this.logout}
               />
@@ -119,6 +121,7 @@ class App extends Component {
           return (
             <>
               <Header
+                favoritesNumber={this.state.favorites.length}
                 user={this.state.user}
                 logout={this.logout}
               />
@@ -133,14 +136,17 @@ class App extends Component {
         return (
           <>
             <Header
+              favoritesNumber={this.state.favorites.length}
               user={this.state.user}
               logout={this.logout}
             />
+        {!this.state.favorites.length ? <h2 className="no-favorites">You don't have any favorites yet!</h2> :
             <FavoritesContainer
               favorites={this.state.favorites}
               addFavorite={this.addFavorite}
               setCurrentListing={this.setCurrentListing}
             />
+          }
           </>
         )
       }} />

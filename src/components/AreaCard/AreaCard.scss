@@ -21,15 +21,22 @@
     margin-bottom: 25px;
   }
 
+  img {
+    height: 10em;
+    object-fit: cover;
+    width: 15em;
+  }
+
   button {
     @include borders();
     color: #0C4C38;
     font-size: .8em;
     font-weight: bold;
     height: 2.5em;
-    padding: 5px;
     margin: 20px;
-  
+    padding: 5px;
+    width: 8em;
+
     &:hover {
       cursor: pointer;
       background-color: #28BB8D;

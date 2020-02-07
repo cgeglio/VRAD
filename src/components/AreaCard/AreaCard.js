@@ -7,11 +7,12 @@ export const AreaCard = ({ id, nickname, longname, description, listings, addLis
 
   return (
   <div className='area-card'>
+    <img src={process.env.PUBLIC_URL + `/${nickname.split(' ').join('')}.jpg`} alt="Area"/>
     <h2>{nickname}</h2>
     <span>{longname}</span>
     <p>{description}</p>
     <Link to={`/area/${id}/listings`}>
-      <button className='view-listings' onClick={() => addListingsToState(listings)}>View listings</button>
+      <button className='view-listings' onClick={() => addListingsToState(listings)}>View Listings</button>
     </Link>
   </div>
   )
