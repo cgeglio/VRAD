@@ -83,6 +83,7 @@ class App extends Component {
           return (
           <>
             <Header
+              favoritesNumber={this.state.favorites.length}
               user={this.state.user}
               logout={this.logout}
             />
@@ -102,6 +103,7 @@ class App extends Component {
           return (
             <>
               <Header
+                favoritesNumber={this.state.favorites.length}
                 user={this.state.user}
                 logout={this.logout}
               />
@@ -119,6 +121,7 @@ class App extends Component {
           return (
             <>
               <Header
+                favoritesNumber={this.state.favorites.length}
                 user={this.state.user}
                 logout={this.logout}
               />
@@ -133,6 +136,7 @@ class App extends Component {
         return (
           <>
             <Header
+              favoritesNumber={this.state.favorites.length}
               user={this.state.user}
               logout={this.logout}
             />

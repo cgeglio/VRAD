@@ -12,7 +12,7 @@ export const AreaCard = ({ id, nickname, longname, description, listings, addLis
     <span>{longname}</span>
     <p>{description}</p>
     <Link to={`/area/${id}/listings`}>
-      <button className='view-listings' onClick={() => addListingsToState(listings)}>View listings</button>
+      <button className='view-listings' onClick={() => addListingsToState(listings)}>View Listings</button>
     </Link>
   </div>
   )

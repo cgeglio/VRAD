@@ -1,7 +1,36 @@
-.header-logo {
-  position: absolute;
-  margin: 10px 15px 15px 10px;
-  left: 0;
-  height: 3em;
-  margin-top: 1em;
+@import "../../mixins.scss";
+
+header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 2.5em;
+  width: 100%;
+
+  h2 {
+    align-self: center;
+    color: #0C4C38;
+    margin-top: 1em;
+  }
+
+  img {
+    position: absolute;
+    margin: 1.4em;
+    left: 0;
+    height: 4em;
+  }
+
+  div {
+    margin: 1em;
+    position: absolute;
+    right: 0;
+  }
+
+  button {
+    @include borders();
+    @include buttons();
+    margin: .5em;
+    width: 10em;
+  }
 }
