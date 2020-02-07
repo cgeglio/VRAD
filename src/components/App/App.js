@@ -74,10 +74,8 @@ class App extends Component {
               <Form
                 addUser={this.addUser}
               />
-              <Loader />
             </>
           )}
-          <Loader />
           </>
         </Route>
         <Route exact path='/areas' render={() => {

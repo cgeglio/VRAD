@@ -1,5 +1,8 @@
 .loader {
   animation: spin infinite 20s linear;
+   img {
+     height: 300px;
+   }
 }
 
 @keyframes spin {
@@ -7,6 +10,6 @@
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(-360deg);
   }
 }

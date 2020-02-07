@@ -2,14 +2,9 @@ import React from 'react';
 import './Loader.scss'
 
 const Loader = () => {
-  const styles = {
-    position: 'absolute',
-    height: '200px;'
-  } 
-
   return (
     <div className='loader'>
-      <img styles={styles} src={url} alt='travel spinner' className='loader-img' />
+      <img src={process.env.PUBLIC_URL + `/noun_Travel_2913599.svg`} alt='travel spinner' className='loader-img' />
     </div>
   )
 }
