@@ -51,7 +51,8 @@ class App extends Component {
   }
 
   addFavorite = listing => {
-    !this.state.favorites.includes(listing) ?
+    let ids = this.state.favorites.map(favorite => favorite.listing_id);
+    !ids.includes(listing.listing_id) ?
     this.setState({favorites: [...this.state.favorites, listing]}) :
     this.removeFavorite(listing.listing_id);
   }
