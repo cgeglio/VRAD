@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import './ListingDetails.scss';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
+import ListingContainer from '../ListingContainer/ListingContainer';
 
 const ListingDetails = ({ name, listing_id, address, details }) => {
   const createList = details.features.map(feature => <li key={Math.random()}>{feature}</li>)
   
   return (
     <article className='listing'>
-      <Carousel className='carousel' width='700px'>
+      <Carousel className='carousel' width='700px' infiniteLoop={true} autoPlay={true}>
         <div>
           <img className='listing-img' src={process.env.PUBLIC_URL + `/images/${listing_id}_a.jpg`} alt='listing 1' />
         </div>
@@ -39,6 +40,13 @@ const ListingDetails = ({ name, listing_id, address, details }) => {
       </section>
     </article>
   )
+}
+
+ListingContainer.propTypes = {
+  name: PropTypes.string,
+  listing_id: PropTypes.number,
+  address: PropTypes.object,
+  details: PropTypes.object
 }
 
 export default ListingDetails

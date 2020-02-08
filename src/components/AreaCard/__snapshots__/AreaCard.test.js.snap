@@ -4,6 +4,10 @@ exports[`AreaCard should match the snapshot with all data passed in correctly 1`
 <div
   className="area-card"
 >
+  <img
+    alt="Area"
+    src="/testnickname.jpg"
+  />
   <h2>
     test nickname
   </h2>
@@ -14,13 +18,13 @@ exports[`AreaCard should match the snapshot with all data passed in correctly 1`
     test description
   </p>
   <Link
-    to="/area/5"
+    to="/area/5/listings"
   >
     <button
       className="view-listings"
       onClick={[Function]}
     >
-      View listings
+      View Listings
     </button>
   </Link>
 </div>

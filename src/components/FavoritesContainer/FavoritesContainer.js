@@ -17,6 +17,11 @@ const FavoritesContainer = ({ favorites, addFavorite, setCurrentListing }) => {
   })
 }
 
-
+FavoritesContainer.propTypes = {
+  favorite: PropTypes.bool,
+  addFavorite: PropTypes.func,
+  setCurrentListing: PropTypes.func,
+  listing_id: PropTypes.number
+}
 
 export default FavoritesContainer

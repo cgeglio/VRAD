@@ -12,4 +12,8 @@ const ListingDetailsContainer = (props) => {
     )
 }
 
+ListingDetailsContainer.propTypes = {
+  listing_id: PropTypes.number
+}
+
 export default ListingDetailsContainer;

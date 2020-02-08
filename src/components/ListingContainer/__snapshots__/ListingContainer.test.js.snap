@@ -2,16 +2,6 @@
 
 exports[`ListingContainer should create listing cards when createCards is called 1`] = `
 <Fragment>
-  <section>
-    <Listing
-      key="5"
-      listing={
-        Object {
-          "listing_id": 5,
-          "name": "test name",
-        }
-      }
-    />
-  </section>
+  <Loader />
 </Fragment>
 `;

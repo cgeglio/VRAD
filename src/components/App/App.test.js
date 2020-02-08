@@ -16,7 +16,9 @@ describe('App', () => {
       error: '',
       user: {name: '', email: '', purpose: ''},
       isLoading: true,
-      listings: []
+      listings: [],
+      currentListing: '',
+      favorites: []
     };
     expect(wrapper.state()).toEqual(expected);
   });
@@ -31,7 +33,9 @@ describe('App', () => {
       error: '',
       user: {name: 'Jeff', email: 'jeff@turing.org', purpose: 'vacation'},
       isLoading: true,
-      listings: []
+      listings: [],
+      currentListing: '',
+      favorites: []
     });
   });
 
@@ -44,9 +48,11 @@ describe('App', () => {
         isLoggedIn: false,
         areas: '',
         error: '',
-        user: { name: '', email: '', purpose: ''},
+        user: {name: '', email: '', purpose: ''},
         isLoading: true,
-        listings: []
+        listings: [],
+        currentListing: '',
+        favorites: []
       });
   });
 });
