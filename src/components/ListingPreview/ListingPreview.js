@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 
 
 class ListingPreview extends Component {
-  constructor () {
+  constructor() {
     super();
-    this.state = {favorite: ''}
+    this.state = {favorite: ''};
   }
 
   determineIcon = () => this.props.listing.favorite ? 'filled' : 'unfilled';
@@ -37,6 +37,7 @@ class ListingPreview extends Component {
 export default ListingPreview;
 
 ListingPreview.propTypes = {
-  listing_id: PropTypes.number,
-  name: PropTypes.string
+  listing: PropTypes.object,
+  addFavorite: PropTypes.func,
+  setCurrentListing: PropTypes.func
 };

@@ -18,5 +18,6 @@ export const Header = ({ user, logout, favoritesNumber }) => {
 
 Header.propTypes = {
   user: PropTypes.object,
-  logout: PropTypes.func
+  logout: PropTypes.func,
+  favoritesNumber: PropTypes.number
 };

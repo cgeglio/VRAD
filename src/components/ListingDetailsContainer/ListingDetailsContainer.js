@@ -13,3 +13,10 @@ const ListingDetailsContainer = (props) => {
 }
 
 export default ListingDetailsContainer;
+
+ListingDetailsContainer.propTypes = {
+  name: PropTypes.string,
+  listing_id: PropTypes.number,
+  address: PropTypes.object,
+  details: PropTypes.object
+};

@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import './AreasContainer.scss';
 import { AreaCard } from '../AreaCard/AreaCard'
 
-export const AreasContainer = (props) => {
-  const areasInfo = props.areas.map(area => {
-    return <AreaCard 
-      {...area} 
+export const AreasContainer = ({ areas, addListingsToState }) => {
+  const areasInfo = areas.map(area => {
+    return <AreaCard
+      {...area}
       key={area.id}
-      addListingsToState={props.addListingsToState} 
+      addListingsToState={addListingsToState}
   />})
 
   return(
@@ -19,5 +19,6 @@ export const AreasContainer = (props) => {
 }
 
 AreasContainer.propTypes = {
-  areas: PropTypes.array
+  areas: PropTypes.array,
+  addListingsToState: PropTypes.func
 };
