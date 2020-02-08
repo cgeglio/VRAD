@@ -16,7 +16,9 @@ describe('App', () => {
       error: '',
       user: {name: '', email: '', purpose: ''},
       isLoading: true,
-      listings: []
+      listings: [],
+      currentListing: '',
+      favorites: []
     };
     expect(wrapper.state()).toEqual(expected);
   });
@@ -31,11 +33,13 @@ describe('App', () => {
       error: '',
       user: {name: 'Jeff', email: 'jeff@turing.org', purpose: 'vacation'},
       isLoading: true,
-      listings: []
+      listings: [],
+      currentListing: '',
+      favorites: []
     });
   });
 
-  it('should reset user info in state when logout is called', () => {
+  it('should reset user info and favorites in state when logout is called', () => {
       const mockUser = {name: 'Jeff', email: 'jeff@turing.org', purpose: 'vacation'};
 
       wrapper.instance().addUser(mockUser);
@@ -46,7 +50,58 @@ describe('App', () => {
         error: '',
         user: { name: '', email: '', purpose: ''},
         isLoading: true,
-        listings: []
+        listings: [],
+        currentListing: '',
+        favorites: []
+      });
+  });
+
+  it('should set the currentListing in state when setCurrentListing is called', () => {
+      const mockListing = {name: 'listing 1', listing_id: 5};
+
+      wrapper.instance().setCurrentListing(mockListing);
+      expect(wrapper.state()).toEqual({
+        isLoggedIn: false,
+        areas: '',
+        error: '',
+        user: { name: '', email: '', purpose: ''},
+        isLoading: true,
+        listings: [],
+        currentListing: mockListing,
+        favorites: []
+      });
+  });
+
+  it('should set state with a new favorite listing when addFavorite is called', () => {
+      const mockListing = {name: 'listing 1', listing_id: 5};
+
+      wrapper.instance().addFavorite(mockListing);
+      expect(wrapper.state()).toEqual({
+        isLoggedIn: false,
+        areas: '',
+        error: '',
+        user: { name: '', email: '', purpose: ''},
+        isLoading: true,
+        listings: [],
+        currentListing: '',
+        favorites: [ mockListing]
+      });
+  });
+
+  it('should remove a favorite listing and set state when removeFavorite is called', () => {
+      const mockListing = {name: 'listing 1', listing_id: 5};
+
+      wrapper.instance().addFavorite(mockListing);
+      wrapper.instance().removeFavorite(5);
+      expect(wrapper.state()).toEqual({
+        isLoggedIn: false,
+        areas: '',
+        error: '',
+        user: { name: '', email: '', purpose: ''},
+        isLoading: true,
+        listings: [],
+        currentListing: '',
+        favorites: []
       });
   });
 });
