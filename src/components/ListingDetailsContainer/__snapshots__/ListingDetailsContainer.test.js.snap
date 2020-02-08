@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListingDetailsContainer should match the snapshot with all data passed in correctly 1`] = `
+<ListingDetails
+  address={
+    Object {
+      "street": "test street",
+    }
+  }
+  details={
+    Object {
+      "features": Array [
+        "test feature",
+      ],
+    }
+  }
+  key="5"
+  listing_id={5}
+  name="test name"
+/>
+`;
