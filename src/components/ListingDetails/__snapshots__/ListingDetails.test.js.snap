@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListingDetails should match the snapshot with all data passed in correctly 1`] = `
+<article
+  className="listing"
+>
+  <Carousel
+    autoPlay={false}
+    axis="horizontal"
+    centerMode={false}
+    centerSlidePercentage={80}
+    className="carousel"
+    dynamicHeight={false}
+    emulateTouch={false}
+    infiniteLoop={false}
+    interval={3000}
+    labels={
+      Object {
+        "item": "slide item",
+        "leftArrow": "previous slide / item",
+        "rightArrow": "next slide / item",
+      }
+    }
+    onChange={[Function]}
+    onClickItem={[Function]}
+    onClickThumb={[Function]}
+    onSwipeEnd={[Function]}
+    onSwipeMove={[Function]}
+    onSwipeStart={[Function]}
+    selectedItem={0}
+    showArrows={true}
+    showIndicators={true}
+    showStatus={true}
+    showThumbs={true}
+    statusFormatter={[Function]}
+    stopOnHover={true}
+    swipeScrollTolerance={5}
+    swipeable={true}
+    transitionTime={350}
+    useKeyboardArrows={false}
+    verticalSwipe="standard"
+    width="700px"
+  >
+    <div>
+      <img
+        alt="listing 1"
+        className="listing-img"
+        src="/images/5_a.jpg"
+      />
+    </div>
+    <div>
+      <img
+        alt="listing 2"
+        className="listing-img"
+        src="/images/5_b.jpg"
+      />
+    </div>
+    <div>
+      <img
+        alt="listing 3"
+        className="listing-img"
+        src="/images/5_c.jpg"
+      />
+    </div>
+  </Carousel>
+  <section
+    className="listing-details"
+  >
+    <div
+      className="title"
+    >
+      <h2>
+        test name
+      </h2>
+      <p>
+        test street
+        , 
+      </p>
+    </div>
+    <div>
+      <p
+        className="cost"
+      >
+        $
+         per night
+      </p>
+    </div>
+    <div
+      className="bed-bath"
+    >
+      <p>
+        Beds: 
+         / Baths: 
+      </p>
+    </div>
+    <div
+      className="features"
+    >
+      <h3>
+        Features:
+      </h3>
+      <ul>
+        <li
+          key="0.7455283617209365"
+        >
+          test feature
+        </li>
+      </ul>
+    </div>
+  </section>
+</article>
+`;
