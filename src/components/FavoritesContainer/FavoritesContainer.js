@@ -17,6 +17,4 @@ const FavoritesContainer = ({ favorites, addFavorite, setCurrentListing }) => {
   })
 }
 
-
-
 export default FavoritesContainer

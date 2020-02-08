@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FavoritesContainer should match the snapshot with all data passed in correctly 1`] = `
+<ListingPreview
+  addFavorite={[MockFunction]}
+  key="5"
+  listing={
+    Object {
+      "favorite": true,
+      "listing_id": 5,
+    }
+  }
+  setCurrentListing={[MockFunction]}
+/>
+`;
