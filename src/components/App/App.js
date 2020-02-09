@@ -112,7 +112,7 @@ class App extends Component {
                 addFavorite={this.addFavorite}
                 setCurrentListing={this.setCurrentListing}
               />
-              <Link to='/areas'><h3>Back to Areas</h3></Link>
+              <Link to='/areas' className="back-btn">Back to Areas</Link>
             </>
           )
         }} />
@@ -128,7 +128,7 @@ class App extends Component {
               <ListingDetailsContainer
                 {...this.state.currentListing}
               />
-              <Link to='/area/:id/listings'><h3>Back to Listings</h3></Link>
+              <Link to='/area/:id/listings' className="back-btn">Back to Listings</Link>
             </>
           )
         }} />
@@ -142,17 +142,17 @@ class App extends Component {
               logout={this.logout}
             />
         {!this.state.favorites.length ?
-          <div>
+          <div className='page'>
             <h2 className="no-favorites">You don't have any favorites yet!</h2>
-            <Link to='/area/:id/listings'><h3>Back to Listings</h3></Link>
+            <Link to='/area/:id/listings' className="back-btn">Back to Listings</Link>
           </div> :
-          <div>
+          <div className='page'>
             <FavoritesContainer
               favorites={this.state.favorites}
               addFavorite={this.addFavorite}
               setCurrentListing={this.setCurrentListing}
             />
-            <Link to='/area/:id/listings'><h3>Back to Listings</h3></Link>
+            <Link to='/area/:id/listings' className="back-btn">Back to Listings</Link>
           </div>
           }
           </>
