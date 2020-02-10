@@ -8,7 +8,7 @@ import Loader from '../Loader/Loader'
 import Form from '../Form/Form'
 import { Header } from '../Header/Header'
 import { AreasContainer } from '../AreasContainer/AreasContainer'
-import { Route, Redirect } from 'react-router-dom'
+import { Route, Redirect, Link } from 'react-router-dom'
 
 class App extends Component {
   constructor() {
@@ -112,6 +112,7 @@ class App extends Component {
                 addFavorite={this.addFavorite}
                 setCurrentListing={this.setCurrentListing}
               />
+              <Link to='/areas' className="back-btn">Back to Areas</Link>
             </>
           )
         }} />
@@ -127,6 +128,7 @@ class App extends Component {
               <ListingDetailsContainer
                 {...this.state.currentListing}
               />
+              <Link to='/area/:id/listings' className="back-btn">Back to Listings</Link>
             </>
           )
         }} />
@@ -139,12 +141,19 @@ class App extends Component {
               user={this.state.user}
               logout={this.logout}
             />
-        {!this.state.favorites.length ? <h2 className="no-favorites">You don't have any favorites yet!</h2> :
+        {!this.state.favorites.length ?
+          <div className='page'>
+            <h2 className="no-favorites">You don't have any favorites yet!</h2>
+            <Link to='/area/:id/listings' className="back-btn">Back to Listings</Link>
+          </div> :
+          <div className='page'>
             <FavoritesContainer
               favorites={this.state.favorites}
               addFavorite={this.addFavorite}
               setCurrentListing={this.setCurrentListing}
             />
+            <Link to='/area/:id/listings' className="back-btn">Back to Listings</Link>
+          </div>
           }
           </>
         )
