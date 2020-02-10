@@ -1,17 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ListingContainer should create listing cards when createCards is called 1`] = `
+exports[`ListingContainer should match the snapshot with all data passed in correctly 1`] = `
 <Fragment>
-  <section>
-    <Listing
-      key="5"
-      listing={
-        Object {
-          "listing_id": 5,
-          "name": "test name",
-        }
-      }
-    />
-  </section>
+  <section />
 </Fragment>
 `;
