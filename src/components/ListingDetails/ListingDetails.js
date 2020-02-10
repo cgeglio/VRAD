@@ -6,7 +6,7 @@ import { Carousel } from 'react-responsive-carousel';
 
 const ListingDetails = ({ name, listing_id, address, details }) => {
   const createList = details.features.map(feature => <li key={Math.random()}>{feature}</li>)
-  
+
   return (
     <article className='listing'>
       <Carousel className='carousel' width='700px'>
@@ -42,3 +42,10 @@ const ListingDetails = ({ name, listing_id, address, details }) => {
 }
 
 export default ListingDetails
+
+ListingDetails.propTypes = {
+  name: PropTypes.string,
+  listing_id: PropTypes.number,
+  address: PropTypes.object,
+  details: PropTypes.object
+};

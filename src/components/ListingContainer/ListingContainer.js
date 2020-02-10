@@ -60,5 +60,8 @@ class ListingContainer extends Component {
 export default ListingContainer
 
 ListingContainer.propTypes = {
-  areas: PropTypes.array
+  favorites: PropTypes.array,
+  listings: PropTypes.array,
+  addFavorite: PropTypes.func,
+  setCurrentListing: PropTypes.func
 };

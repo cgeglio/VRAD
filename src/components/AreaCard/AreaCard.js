@@ -19,7 +19,10 @@ export const AreaCard = ({ id, nickname, longname, description, listings, addLis
 }
 
 AreaCard.propTypes = {
+  id: PropTypes.number,
   nickname: PropTypes.string,
   longname: PropTypes.string,
-  description: PropTypes.string
+  description: PropTypes.string,
+  listings: PropTypes.array,
+  addListingsToState: PropTypes.func
 };
