@@ -12,7 +12,7 @@ This application allows users to browse rental homes available in different Denv
 - Run npm start
 - Enter login information to view listings
 
-## Customer's Page
+## In Action
 ![Scout gif](https://media.giphy.com/media/h593TF5vIX7d0fwtzp/giphy.gif)
 
 
