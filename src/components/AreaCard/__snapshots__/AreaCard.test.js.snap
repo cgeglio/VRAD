@@ -23,6 +23,7 @@ exports[`AreaCard should match the snapshot with all data passed in correctly 1`
     <button
       className="view-listings"
       onClick={[Function]}
+      type="button"
     >
       View Listings
     </button>

@@ -9,9 +9,9 @@ export const fetchDetails = (areas) => {
           longname: areaInfo.name,
           location: areaInfo.location,
           description: areaInfo.about,
-          listings: areaInfo.listings
-        }
-      })
-  })
+          listings: areaInfo.listings,
+        };
+      });
+  });
   return Promise.all(promises);
-}
+};

@@ -17,6 +17,7 @@ exports[`Header should match the snapshot with all data passed in correctly 1`] 
     >
       <button
         className="favorites"
+        type="button"
       >
         Favorites (
         0
@@ -29,6 +30,7 @@ exports[`Header should match the snapshot with all data passed in correctly 1`] 
       <button
         className="logOut"
         onClick={[Function]}
+        type="button"
       >
         Log out
       </button>

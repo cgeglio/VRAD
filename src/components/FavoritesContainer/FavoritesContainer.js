@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './FavoritesContainer.scss';
-import ListingPreview from '../ListingPreview/ListingPreview'
+import ListingPreview from '../ListingPreview/ListingPreview';
 
 const FavoritesContainer = ({ favorites, addFavorite, setCurrentListing }) => {
   return favorites.map(favorite => {
@@ -13,14 +13,14 @@ const FavoritesContainer = ({ favorites, addFavorite, setCurrentListing }) => {
         addFavorite={addFavorite}
         setCurrentListing={setCurrentListing}
       />
-    )
-  })
-}
+    );
+  });
+};
 
-export default FavoritesContainer
+export default FavoritesContainer;
 
 FavoritesContainer.propTypes = {
   favorites: PropTypes.array,
   addFavorite: PropTypes.func,
-  setCurrentListing: PropTypes.func
+  setCurrentListing: PropTypes.func,
 };

@@ -1,67 +1,72 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './ListingContainer.scss';
-import ListingPreview from '../ListingPreview/ListingPreview'
-import Loader from '../Loader/Loader'
+import ListingPreview from '../ListingPreview/ListingPreview';
+import Loader from '../Loader/Loader';
 
 class ListingContainer extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       isLoading: true,
       listings: '',
-      error: ''
-    }
+      error: '',
+    };
   }
 
   componentDidMount() {
-    let allListings = this.props.listings.map(listing => {
+    const { listings } = this.props;
+    const allListings = listings.map(listing => {
       return fetch(`http://localhost:3001${listing}`)
         .then(res => res.json())
-        .then(data => data)
-    })
+        .then(data => data);
+    });
     Promise.all(allListings)
-      .then(data => data.map(listing => ({...listing, favorite: false})))
-      .then(listings => this.setState({ listings: listings, isLoading: false }))
+      .then(data => data.map(listing => ({ ...listing, favorite: false })))
+      .then(listingInfo => this.setState({ listings: listingInfo, isLoading: false }));
   }
 
   determineFavoriteStatus = () => {
-    let ids = this.props.favorites.map(favorite => favorite.listing_id)
+    const { favorites } = this.props;
+    const ids = favorites.map(favorite => favorite.listing_id);
     return this.state.listings.map(listing => {
       return ids.includes(listing.listing_id) ? listing.favorite = true : listing;
-    })
+    });
   }
 
   createCards = () => {
+    const { addFavorite, setCurrentListing } = this.props;
+    const { listings } = this.state;
     this.determineFavoriteStatus();
-    return this.state.listings.map(listing => {
-      return(
+    return listings.map(listing => {
+      return (
         <ListingPreview
           listing={listing}
           key={listing.listing_id}
-          addFavorite={this.props.addFavorite}
-          setCurrentListing={this.props.setCurrentListing}
+          addFavorite={addFavorite}
+          setCurrentListing={setCurrentListing}
         />
-      )
-    })
+      );
+    });
   }
 
 
   render() {
+    const { isLoading } = this.state;
     return (
-      <>{this.state.isLoading
+      <>{isLoading
         ? <Loader />
         : <section>{this.createCards()}</section>}
       </>
-    )
+    );
   }
 }
 
-export default ListingContainer
+export default ListingContainer;
 
 ListingContainer.propTypes = {
-  favorites: PropTypes.array,
-  listings: PropTypes.array,
-  addFavorite: PropTypes.func,
-  setCurrentListing: PropTypes.func
+  favorites: PropTypes.array.isRequired,
+  listings: PropTypes.array.isRequired,
+  addFavorite: PropTypes.func.isRequired,
+  setCurrentListing: PropTypes.func.isRequired,
 };
