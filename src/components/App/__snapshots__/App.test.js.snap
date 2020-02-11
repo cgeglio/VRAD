@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match the snapshot 1`] = `
+<main
+  className="app"
+>
+  <Route
+    exact={true}
+    path="/"
+  >
+    <img
+      alt="Logo"
+      className="logo"
+      src="/scoutGreen.png"
+    />
+    <img
+      alt="Rocky Mountain National Park"
+      className="background-img"
+      src="/rmnp.jpg"
+    />
+    <Form
+      addUser={[Function]}
+    />
+  </Route>
+  <Route
+    exact={true}
+    path="/areas"
+    render={[Function]}
+  />
+  <Route
+    exact={true}
+    path="/area/:id/listings"
+    render={[Function]}
+  />
+  <Route
+    exact={true}
+    path="/area/:id/listings/:id"
+    render={[Function]}
+  />
+  <Route
+    exact={true}
+    path="/favorites"
+    render={[Function]}
+  />
+</main>
+`;

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './ListingContainer.scss';
 import ListingPreview from '../ListingPreview/ListingPreview';
 import Loader from '../Loader/Loader';
+import { getListings } from '../../helpers';
 
 class ListingContainer extends Component {
   constructor(props) {
@@ -16,14 +17,10 @@ class ListingContainer extends Component {
 
   componentDidMount() {
     const { listings } = this.props;
-    const allListings = listings.map(listing => {
-      return fetch(`http://localhost:3001${listing}`)
-        .then(res => res.json())
-        .then(data => data);
-    });
-    Promise.all(allListings)
+    getListings(listings)
       .then(data => data.map(listing => ({ ...listing, favorite: false })))
-      .then(listingInfo => this.setState({ listings: listingInfo, isLoading: false }));
+      .then(listingInfo => this.setState({ listings: listingInfo, isLoading: false }))
+      .catch(error => this.setState({ error: 'Encountered error' }));
   }
 
   determineFavoriteStatus = () => {
@@ -65,8 +62,8 @@ class ListingContainer extends Component {
 export default ListingContainer;
 
 ListingContainer.propTypes = {
-  favorites: PropTypes.array.isRequired,
-  listings: PropTypes.array.isRequired,
-  addFavorite: PropTypes.func.isRequired,
-  setCurrentListing: PropTypes.func.isRequired,
+  favorites: PropTypes.array,
+  listings: PropTypes.array,
+  addFavorite: PropTypes.func,
+  setCurrentListing: PropTypes.func,
 };

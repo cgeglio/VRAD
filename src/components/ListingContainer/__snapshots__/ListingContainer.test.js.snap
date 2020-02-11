@@ -2,6 +2,6 @@
 
 exports[`ListingContainer should match the snapshot with all data passed in correctly 1`] = `
 <Fragment>
-  <section />
+  <Loader />
 </Fragment>
 `;
