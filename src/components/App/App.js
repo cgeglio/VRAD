@@ -79,7 +79,7 @@ class App extends Component {
           </>
         </Route>
         <Route exact path='/areas' render={() => {
-          return (
+          return !this.state.isLoggedIn ? <Redirect to='/' /> : (
           <>
             <Header
               favoritesNumber={this.state.favorites.length}
@@ -96,10 +96,10 @@ class App extends Component {
             </>
             : <Loader />}
           </>
-          )
+        )
         }}/>
         <Route exact path='/area/:id/listings' render={({ match }) => {
-          return (
+          return !this.state.isLoggedIn ? <Redirect to='/' /> : (
             <>
               <Header
                 favoritesNumber={this.state.favorites.length}
@@ -117,8 +117,7 @@ class App extends Component {
           )
         }} />
         <Route exact path='/area/:id/listings/:id' render={({ match }) => {
-
-          return (
+          return !this.state.isLoggedIn ? <Redirect to='/' /> : (
             <>
               <Header
                 favoritesNumber={this.state.favorites.length}
@@ -133,8 +132,7 @@ class App extends Component {
           )
         }} />
       <Route exact path='/favorites' render={({ match }) => {
-
-        return (
+        return !this.state.isLoggedIn ? <Redirect to='/' /> : (
           <>
             <Header
               favoritesNumber={this.state.favorites.length}
