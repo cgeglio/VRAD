@@ -4,7 +4,7 @@ import { Route, Redirect, Link } from 'react-router-dom';
 import ListingContainer from '../ListingContainer/ListingContainer';
 import ListingDetailsContainer from '../ListingDetailsContainer/ListingDetailsContainer';
 import FavoritesContainer from '../FavoritesContainer/FavoritesContainer';
-import { fetchDetails } from './helpers';
+import { fetchDetails, getAreas } from '../../helpers';
 import Loader from '../Loader/Loader';
 import Form from '../Form/Form';
 import { Header } from '../Header/Header';
@@ -26,8 +26,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/api/v1/areas/')
-      .then(response => response.json())
+    getAreas()
       .then(areas => fetchDetails(areas))
       .then(areaData => this.setState({ areas: areaData, isLoading: false }))
       .catch(error => this.setState({ error: 'Encountered error' }));
