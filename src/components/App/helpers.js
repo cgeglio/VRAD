@@ -1,7 +1,12 @@
 export const fetchDetails = (areas) => {
   const promises = areas.areas.map(area => {
     return fetch('http://localhost:3001' + area.details)
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw Error('Error gathering listings')
+        }
+        return response.json()
+      })
       .then(areaInfo => {
         return {
           id: areaInfo.id,
