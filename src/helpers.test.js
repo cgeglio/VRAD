@@ -4,8 +4,8 @@ describe('fetchDetails', () => {
   let areas = {
     "areas": [
         {
-            "area": "RiNo",
-            "details": "/api/v1/areas/590"
+          "area": "RiNo",
+          "details": "/api/v1/areas/590"
         }
     ]
 }
