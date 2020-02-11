@@ -40,6 +40,7 @@ exports[`Form should match the snapshot with all data passed in correctly 1`] = 
   <button
     className="submit-button"
     onClick={[Function]}
+    type="button"
   >
     Submit
   </button>

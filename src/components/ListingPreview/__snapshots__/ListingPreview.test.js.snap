@@ -24,6 +24,7 @@ exports[`ListingPreview should match the snapshot with all data passed in correc
         <button
           className="details-btn"
           onClick={[Function]}
+          type="button"
         >
           View Details
         </button>
@@ -31,6 +32,7 @@ exports[`ListingPreview should match the snapshot with all data passed in correc
       <button
         className="favorite-btn"
         onClick={[Function]}
+        type="button"
       >
         <img
           alt="Favorite icon"

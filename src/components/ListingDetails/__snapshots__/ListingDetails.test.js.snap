@@ -101,7 +101,7 @@ exports[`ListingDetails should match the snapshot with all data passed in correc
       </h3>
       <ul>
         <li
-          key="0.7455283617209365"
+          key="0.32613854892040606"
         >
           test feature
         </li>
