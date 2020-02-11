@@ -36,7 +36,7 @@ describe('ListingContainer', () => {
     };
 
     getListings.mockImplementation(() => {
-      return Promise.resolve([mockListing])
+      return Promise.resolve(mockListing)
     })
 
   });
@@ -63,13 +63,12 @@ describe('ListingContainer', () => {
 
   it('should retrieve listings when mounting', () => {
     const wrapper = shallow(<ListingContainer
-      listings={[]}
+      listings={['/api/v1/listings/3921']}
       favorites={[mockListing]}
       addFavorite={jest.fn()}
       setCurrentListing={jest.fn()}
     />);
 
-    wrapper.props.listings = ["/api/v1/listings/3921"];
     expect(getListings).toHaveBeenCalledWith(["/api/v1/listings/3921"]);
   });
 
@@ -93,6 +92,7 @@ describe('ListingContainer', () => {
       addFavorite={jest.fn()}
       setCurrentListing={jest.fn()}
     />);
+    
     wrapper.setState({ listings: [mockListing] });
     wrapper.instance().determineFavoriteStatus = jest.fn(() => {
       return { favorite: true, listing_id: 5, name: 'test name' };

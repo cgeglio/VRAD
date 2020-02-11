@@ -140,7 +140,7 @@ describe('App', () => {
         ]
     };
     wrapper = shallow(<App />);
-    await getAreas
+    await getAreas()
     expect(fetchDetails).toHaveBeenCalledWith(mockArea);
     expect(wrapper.state('areas')).toEqual(expected);
   });

@@ -47,7 +47,6 @@ class ListingContainer extends Component {
     });
   }
 
-
   render() {
     const { isLoading } = this.state;
     return (

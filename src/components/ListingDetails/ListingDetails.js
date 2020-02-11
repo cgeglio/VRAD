@@ -4,8 +4,8 @@ import './ListingDetails.scss';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 
-const ListingDetails = ({ name, listing_id, address, details }) => {
-  const createList = details.features.map(feature => <li key={Math.random()}>{feature}</li>);
+const ListingDetails = ({ name, listing_id, address, details, dev_id }) => {
+  const createList = details.features.map((feature, i) => <li key={dev_id + [i]}>{feature}</li>);
 
   return (
     <article className="listing">
