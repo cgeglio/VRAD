@@ -67,7 +67,7 @@ describe('App', () => {
     wrapper = shallow(<App />);
     expect(getAreas).toHaveBeenCalled();
   });
-  
+
   it('should set state with user info when addUser is called', () => {
     wrapper = shallow(<App />);
     wrapper.instance().addUser(mockUser);
@@ -122,7 +122,7 @@ describe('App', () => {
     }]);
   });
 
-  it('should update state with area details', async () => {
+  it('should update state with area details', () => {
     const expected = {
         id: 590,
         name: "River North",
@@ -140,7 +140,6 @@ describe('App', () => {
         ]
     };
     wrapper = shallow(<App />);
-    await getAreas()
     expect(fetchDetails).toHaveBeenCalledWith(mockArea);
     expect(wrapper.state('areas')).toEqual(expected);
   });

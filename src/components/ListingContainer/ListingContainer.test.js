@@ -32,7 +32,6 @@ describe('ListingContainer', () => {
       "dev_id": "u4gh2j",
       "area": "rino",
       "db_connect": 834470,
-      "favorite": false,
     };
 
     getListings.mockImplementation(() => {
@@ -63,7 +62,7 @@ describe('ListingContainer', () => {
 
   it('should retrieve listings when mounting', () => {
     const wrapper = shallow(<ListingContainer
-      listings={['/api/v1/listings/3921']}
+      listings={["/api/v1/listings/3921"]}
       favorites={[mockListing]}
       addFavorite={jest.fn()}
       setCurrentListing={jest.fn()}
@@ -74,15 +73,14 @@ describe('ListingContainer', () => {
 
   it('should update listings in state when getListings is called', () => {
     const wrapper = shallow(<ListingContainer
-      listings={[]}
+      listings={["/api/v1/listings/3921"]}
       favorites={[mockListing]}
       addFavorite={jest.fn()}
       setCurrentListing={jest.fn()}
     />);
 
-    wrapper.props.listings = ["/api/v1/listings/3921"];
     expect(getListings).toHaveBeenCalledWith(["/api/v1/listings/3921"]);
-    expect(wrapper.state('listings')).toEqual(mockListing);
+    expect(wrapper.state('listings')).toEqual([{ ...mockListing, favorite: false }]);
   });
 
   it('should determine which listings are favorites when determineFavoriteStatus is called', () => {

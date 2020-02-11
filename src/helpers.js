@@ -16,9 +16,9 @@ export const fetchDetails = (areas) => {
           description: areaInfo.about,
           listings: areaInfo.listings,
         };
-      });
+      })
   });
-  return Promise.all(promises);
+  return Promise.all(promises)
 };
 
 export const getAreas = () => {
@@ -42,5 +42,4 @@ export const getListings = (listings) => {
       });
     });
  return Promise.all(allListings)
-    .catch(error => console.log('Encountered error'));
 };
