@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './App.scss';
 import ListingContainer from '../ListingContainer/ListingContainer'
 import ListingDetailsContainer from '../ListingDetailsContainer/ListingDetailsContainer'
@@ -13,12 +13,12 @@ import AreaMap from '../AreaMap/AreaMap';
 
 class App extends Component {
   constructor() {
-    super()
-    this.state= {
+    super();
+    this.state = {
       isLoggedIn: false,
       areas: '',
       error: '',
-      user: {name: '', email: '', purpose: ''},
+      user: { name: '', email: '', purpose: '' },
       isLoading: true,
       listings: [],
       currentListing: '',
@@ -27,138 +27,148 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/api/v1/areas/')
-      .then(response => response.json())
+    getAreas()
       .then(areas => fetchDetails(areas))
       .then(areaData => this.setState({ areas: areaData, isLoading: false }))
-      .catch(error => this.setState({ error:'Encountered error'}))
+      .catch(error => this.setState({ error: 'Encountered error' }));
   }
 
   addUser = (user) => {
-    this.setState({user: user, isLoggedIn: true});
+    this.setState({ user, isLoggedIn: true });
   }
 
   logout = () => {
-    this.setState({ isLoggedIn: false, user: { name: '', email: '', purpose: ''}, favorites: [] })
+    this.setState({ isLoggedIn: false, user: { name: '', email: '', purpose: '' }, favorites: [] });
   }
 
   addListingsToState = listings => {
-    const allListings = listings.map(listing => listing)
-    this.setState({ listings: allListings })
+    const allListings = listings.map(listing => listing);
+    this.setState({ listings: allListings });
   }
 
   setCurrentListing = listing => {
-    this.setState({currentListing: listing})
+    this.setState({ currentListing: listing });
   }
 
   addFavorite = listing => {
-    let ids = this.state.favorites.map(favorite => favorite.listing_id);
-    !ids.includes(listing.listing_id) ?
-    this.setState({favorites: [...this.state.favorites, listing]}) :
-    this.removeFavorite(listing.listing_id);
+    const { favorites } = this.state;
+    const ids = favorites.map(favorite => favorite.listing_id);
+    return !ids.includes(listing.listing_id)
+      ? this.setState({ favorites: [...favorites, listing] })
+      : this.removeFavorite(listing.listing_id);
   }
 
   removeFavorite = listingId => {
-    this.setState({favorites: this.state.favorites.filter(favorite => favorite.listing_id !== listingId)});
+    const { favorites } = this.state;
+    this.setState({ favorites: favorites.filter(favorite => favorite.listing_id !== listingId) });
   }
 
-  render () {
+  render() {
+    const { favorites, user, listings, isLoading, isLoggedIn, areas, currentListing } = this.state;
     return (
-      <main className='app'>
-        <Route exact path='/'>
+      <main className="app">
+        <Route exact path="/">
           <>
-          {this.state.isLoggedIn ? <Redirect to='/areas' /> : (
-            <>
-              <img src={process.env.PUBLIC_URL + `/scoutGreen.png`} alt="Logo" className="logo" />
-              <img src={process.env.PUBLIC_URL + `/rmnp.jpg`} alt="Rocky Mountain National Park" className="background-img" />
-              <Form
-                addUser={this.addUser}
-              />
-            </>
-          )}
+            {isLoggedIn ? <Redirect to="/areas" /> : (
+              <>
+                <img src={process.env.PUBLIC_URL + '/scoutGreen.png'} alt="Logo" className="logo" />
+                <img src={process.env.PUBLIC_URL + '/rmnp.jpg'} alt="Rocky Mountain National Park" className="background-img" />
+                <Form
+                  addUser={this.addUser}
+                />
+              </>
+            )}
           </>
         </Route>
-        <Route exact path='/areas' render={() => {
-          return (
-          <>
-            <Header
-              favoritesNumber={this.state.favorites.length}
-              user={this.state.user}
-              logout={this.logout}
-            />
-            {!this.state.isLoading
-            ?
-            <>
-              <AreasContainer
-                areas={this.state.areas}
-                addListingsToState={this.addListingsToState}
-              />
-              <AreaMap />
-            </>
-            : <Loader />}
-          </>
-          )
-        }}/>
-        <Route exact path='/area/:id/listings' render={({ match }) => {
-          return (
+        <Route exact path="/areas" render={() => {
+          return !isLoggedIn ? <Redirect to="/" /> : (
             <>
               <Header
-                favoritesNumber={this.state.favorites.length}
-                user={this.state.user}
+                favoritesNumber={favorites.length}
+                user={user}
+                logout={this.logout}
+              />
+              {!isLoading
+                ? (
+                  <>
+                    <AreasContainer
+                      areas={areas}
+                      addListingsToState={this.addListingsToState}
+                    />
+                    <AreaMap />
+                  </>
+                )
+                : <Loader />}
+            </>
+          );
+        }}
+        />
+        <Route exact path="/area/:id/listings" render={() => {
+          return !isLoggedIn ? <Redirect to="/" /> : (
+            <>
+              <Header
+                favoritesNumber={favorites.length}
+                user={user}
                 logout={this.logout}
               />
               <ListingContainer
-                favorites={this.state.favorites}
-                listings={this.state.listings}
+                favorites={favorites}
+                listings={listings}
                 addFavorite={this.addFavorite}
                 setCurrentListing={this.setCurrentListing}
               />
-              <Link to='/areas' className="back-btn">Back to Areas</Link>
+              <Link to="/areas" className="back-btn">Back to Areas</Link>
             </>
-          )
-        }} />
-        <Route exact path='/area/:id/listings/:id' render={({ match }) => {
-          return (
+          );
+        }}
+        />
+        <Route exact path="/area/:id/listings/:id" render={() => {
+          return !isLoggedIn ? <Redirect to="/" /> : (
             <>
               <Header
-                favoritesNumber={this.state.favorites.length}
-                user={this.state.user}
+                favoritesNumber={favorites.length}
+                user={user}
                 logout={this.logout}
               />
               <ListingDetailsContainer
-                {...this.state.currentListing}
+                {...currentListing}
               />
-              <Link to='/area/:id/listings' className="back-btn">Back to Listings</Link>
+              <Link to="/area/:id/listings" className="back-btn">Back to Listings</Link>
             </>
-          )
-        }} />
-      <Route exact path='/favorites' render={({ match }) => {
-        return (
-          <>
-            <Header
-              favoritesNumber={this.state.favorites.length}
-              user={this.state.user}
-              logout={this.logout}
-            />
-        {!this.state.favorites.length ?
-          <div className='page'>
-            <h2 className="no-favorites">You don't have any favorites yet!</h2>
-            <Link to='/area/:id/listings' className="back-btn">Back to Listings</Link>
-          </div> :
-          <div className='page'>
-            <FavoritesContainer
-              favorites={this.state.favorites}
-              addFavorite={this.addFavorite}
-              setCurrentListing={this.setCurrentListing}
-            />
-            <Link to='/area/:id/listings' className="back-btn">Back to Listings</Link>
-          </div>
-          }
-          </>
-        )
-      }} />
-    </main>
-    )
+          );
+        }}
+        />
+        <Route exact path="/favorites" render={() => {
+          return !isLoggedIn ? <Redirect to="/" /> : (
+            <>
+              <Header
+                favoritesNumber={favorites.length}
+                user={user}
+                logout={this.logout}
+              />
+              {!favorites.length
+                ? (
+                  <div className="page">
+                    <h2 className="no-favorites">You don't have any favorites yet!</h2>
+                    <Link to="/area/:id/listings" className="back-btn">Back to Listings</Link>
+                  </div>
+                )
+                : (
+                  <div className="page">
+                    <FavoritesContainer
+                      favorites={favorites}
+                      addFavorite={this.addFavorite}
+                      setCurrentListing={this.setCurrentListing}
+                    />
+                    <Link to="/area/:id/listings" className="back-btn">Back to Listings</Link>
+                  </div>
+                )}
+            </>
+          );
+        }}
+        />
+      </main>
+    );
   }
 }
 

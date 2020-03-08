@@ -5,68 +5,72 @@ import './Form.scss';
 class Form extends Component {
   constructor() {
     super();
-    this.state = {name:'', email:'', purpose:'', error: false}
+    this.state = { name: '', email: '', purpose: '', error: false };
   }
 
   handleChange = event => {
-    this.setState({[event.target.name]: event.target.value, error: false});
+    this.setState({ [event.target.name]: event.target.value, error: false });
   }
 
   checkInputs = event => {
     event.preventDefault();
-    let formValues = Object.values(this.state);
+    const formValues = Object.values(this.state);
     if (!formValues.includes('')) {
       this.addUser(event);
     } else {
-      this.setState({error: true})
+      this.setState({ error: true });
     }
   }
 
   addUser = event => {
     event.preventDefault();
-    this.props.addUser({name: this.state.name, email: this.state.email, purpose: this.state.purpose})
-    this.setState({name:'', email:'', purpose:'', error: false});
+    const { name, email, purpose } = this.state;
+    const { addUser } = this.props;
+    addUser({ name, email, purpose });
+    this.setState({ name: '', email: '', purpose: '', error: false });
   }
 
 
   render() {
+    const { name, email, purpose, error } = this.state;
     return (
       <form>
         <input
           type="text"
           placeholder="Name..."
           name="name"
-          value={this.state.name}
+          value={name}
           onChange={this.handleChange}
         />
         <input
           type="text"
           placeholder="Email..."
           name="email"
-          value={this.state.email}
+          value={email}
           onChange={this.handleChange}
         />
         <input
           type="text"
           placeholder="Purpose..."
           name="purpose"
-          value={this.state.purpose}
+          value={purpose}
           onChange={this.handleChange}
-          list="purpose"/>
+          list="purpose"
+        />
         <datalist id="purpose">
-          <option value="Vacation"/>
-          <option value="Business"/>
-          <option value="Other"/>
+          <option value="Vacation" />
+          <option value="Business" />
+          <option value="Other" />
         </datalist>
-        <button className="submit-button" onClick={this.checkInputs}>Submit</button>
-        { this.state.error ? <p>Please complete all fields!</p> : null }
+        <button type="button" className="submit-button" onClick={this.checkInputs}>Submit</button>
+        { error ? <p>Please complete all fields!</p> : null }
       </form>
-    )
+    );
   }
 }
 
-export default Form
+export default Form;
 
 Form.propTypes = {
-  addUser: PropTypes.func
+  addUser: PropTypes.func.isRequired,
 };
