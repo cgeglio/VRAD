@@ -8,7 +8,8 @@ import Loader from '../Loader/Loader'
 import Form from '../Form/Form'
 import { Header } from '../Header/Header'
 import { AreasContainer } from '../AreasContainer/AreasContainer'
-import { Route, Redirect, Link } from 'react-router-dom'
+import { Route, Redirect, Link } from 'react-router-dom';
+import AreaMap from '../AreaMap/AreaMap';
 
 class App extends Component {
   constructor() {
@@ -21,7 +22,7 @@ class App extends Component {
       isLoading: true,
       listings: [],
       currentListing: '',
-      favorites: []
+      favorites: [],
     };
   }
 
@@ -62,7 +63,6 @@ class App extends Component {
   }
 
   render () {
-
     return (
       <main className='app'>
         <Route exact path='/'>
@@ -93,6 +93,7 @@ class App extends Component {
                 areas={this.state.areas}
                 addListingsToState={this.addListingsToState}
               />
+              <AreaMap />
             </>
             : <Loader />}
           </>
@@ -117,7 +118,6 @@ class App extends Component {
           )
         }} />
         <Route exact path='/area/:id/listings/:id' render={({ match }) => {
-
           return (
             <>
               <Header
@@ -133,7 +133,6 @@ class App extends Component {
           )
         }} />
       <Route exact path='/favorites' render={({ match }) => {
-
         return (
           <>
             <Header
