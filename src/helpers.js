@@ -23,7 +23,7 @@ export const fetchDetails = (areas) => {
 
 export const getAreas = () => {
   return fetch('http://localhost:3001/api/v1/areas/')
-  .then(response => {
+    .then(response => {
       if (!response.ok) {
         throw Error('Error while fetching, did not get 200 status code')
       }

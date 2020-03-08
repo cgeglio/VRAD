@@ -3,7 +3,7 @@ import './App.scss';
 import ListingContainer from '../ListingContainer/ListingContainer'
 import ListingDetailsContainer from '../ListingDetailsContainer/ListingDetailsContainer'
 import FavoritesContainer from '../FavoritesContainer/FavoritesContainer'
-import { fetchDetails } from './helpers.js'
+import { fetchDetails, getAreas } from '../../helpers';
 import Loader from '../Loader/Loader'
 import Form from '../Form/Form'
 import { Header } from '../Header/Header'
