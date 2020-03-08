@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import './App.scss';
+import ListingContainer from '../ListingContainer/ListingContainer'
+import ListingDetailsContainer from '../ListingDetailsContainer/ListingDetailsContainer'
+import FavoritesContainer from '../FavoritesContainer/FavoritesContainer'
+import { fetchDetails } from './helpers.js'
+import Loader from '../Loader/Loader'
+import Form from '../Form/Form'
+import { Header } from '../Header/Header'
+import { AreasContainer } from '../AreasContainer/AreasContainer'
 import { Route, Redirect, Link } from 'react-router-dom';
-import ListingContainer from '../ListingContainer/ListingContainer';
-import ListingDetailsContainer from '../ListingDetailsContainer/ListingDetailsContainer';
-import FavoritesContainer from '../FavoritesContainer/FavoritesContainer';
-import { fetchDetails, getAreas } from '../../helpers';
-import Loader from '../Loader/Loader';
-import Form from '../Form/Form';
-import { Header } from '../Header/Header';
-import { AreasContainer } from '../AreasContainer/AreasContainer';
+import AreaMap from '../AreaMap/AreaMap';
 
 class App extends Component {
   constructor() {
@@ -94,6 +95,7 @@ class App extends Component {
                       areas={areas}
                       addListingsToState={this.addListingsToState}
                     />
+                    <AreaMap />
                   </>
                 )
                 : <Loader />}
